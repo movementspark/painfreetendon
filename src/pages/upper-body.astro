@@ -1,0 +1,169 @@
+---
+import BaseLayout   from '@layouts/BaseLayout.astro';
+import Hero         from '@components/Hero.astro';
+import CTABanner    from '@components/CTABanner.astro';
+import TrustSection from '@components/TrustSection.astro';
+
+const tendons = [
+  {
+    id:       'tennis-elbow',
+    name:      'Lateral Epicondylitis',
+    label:     'Tennis Elbow',
+    icon:      '🎾',
+    overview:  'Tennis elbow affects the extensor tendons on the outside of the elbow, most often at the lateral epicondyle. Despite the name, it\'s very common in non-tennis players — anyone who performs repetitive gripping, typing, or tool use is at risk.',
+    symptoms: [
+      'Pain and tenderness on the outer elbow and forearm',
+      'Weakness with gripping and wrist extension',
+      'Pain when shaking hands, turning a doorknob, or lifting',
+      'Often aching at rest after a day of activity',
+    ],
+    what_to_do: [
+      'Reduce provocative loads temporarily — don\'t stop all hand use',
+      'Wrist extension isometrics: elbow extended, 5 × 45s at moderate discomfort',
+      'Progress to eccentric and heavy slow resistance: wrist curls over a table edge',
+      'Review grip size, workstation ergonomics, and tool handles',
+    ],
+  },
+  {
+    id:       'golfers-elbow',
+    name:      'Medial Epicondylitis',
+    label:     'Golfer\'s Elbow',
+    icon:      '⛳',
+    overview:  'Golfer\'s elbow affects the flexor-pronator tendons at the inside of the elbow. Gripping sports, throwing, and desk work are common contributing factors. It often presents more subtly than tennis elbow.',
+    symptoms: [
+      'Pain on the inside of the elbow and upper forearm',
+      'Discomfort with gripping and wrist flexion',
+      'Pain with throwing or overhead activities',
+      'Sometimes associated with ulnar nerve tingling',
+    ],
+    what_to_do: [
+      'Identify and reduce the specific loads driving symptoms',
+      'Wrist flexion and pronation isometrics for pain relief',
+      'Progress to eccentric exercises: slow controlled wrist flexion lowering',
+      'Address grip strength deficits and forearm muscle imbalances',
+    ],
+  },
+  {
+    id:       'rotator-cuff',
+    name:      'Rotator Cuff Tendons',
+    label:     'Shoulder tendinopathy',
+    icon:      '💪',
+    overview:  'The rotator cuff is a group of four tendons that stabilise the shoulder. Supraspinatus tendinopathy is most common, often presenting as painful arc syndrome. It\'s frequently linked to rapid increases in overhead load or prolonged poor posture.',
+    symptoms: [
+      'Painful arc when raising the arm between 60–120°',
+      'Difficulty reaching overhead or behind the back',
+      'Night pain when lying on the affected shoulder',
+      'Weakness and fatigue with sustained shoulder activity',
+    ],
+    what_to_do: [
+      'Avoid extreme compression positions (sleeping on shoulder, arm above head)',
+      'Shoulder isometrics in a pain-free range for early management',
+      'Progressive rotator cuff strengthening: external rotation, side-lying raises',
+      'Address thoracic mobility and scapular control as contributing factors',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Upper Body Tendons"
+  description="Guidance for tennis elbow, golfer's elbow, and rotator cuff tendinopathy. Evidence-informed management from Paul Cramer, RMT."
+>
+
+  <!-- HERO -->
+  <Hero
+    eyebrow="Upper body tendons"
+    title="Tennis elbow, golfer's elbow & rotator cuff tendinopathy"
+    body="Upper body tendon pain is often dismissed as a minor issue — until it affects everything from typing to lifting a coffee cup. Here's what's actually going on and what to do about it."
+    primaryCta={{ label: 'Jump to a tendon', href: '#tennis-elbow' }}
+    secondaryCta={{ label: 'View programs', href: '/programs' }}
+  />
+
+  <!-- Overview -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <span class="badge">Overview</span>
+        <h2 class="section-title mb-4">Why upper body tendons become painful</h2>
+        <p class="text-slate-mid leading-relaxed mb-4">
+          Upper body tendons are uniquely vulnerable because so much of modern life loads them repetitively — keyboards, phones, tools, sports. The cumulative load often exceeds what the tendon can tolerate before it has time to recover.
+        </p>
+        <p class="text-slate-mid leading-relaxed">
+          Unlike lower body tendons, upper body tendons are also heavily influenced by posture, joint position, and proximal strength. A complete approach addresses not just the tendon itself, but the context it operates in.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Individual tendons -->
+  {tendons.map((t, i) => (
+    <section id={t.id} class={`py-20 ${i % 2 === 0 ? 'bg-bg-alt' : 'bg-white'}`}>
+      <div class="max-w-6xl mx-auto px-6">
+
+        <div class="flex items-start gap-4 mb-10">
+          <div class="w-14 h-14 rounded-2xl bg-teal-light flex items-center justify-center text-2xl flex-shrink-0">
+            {t.icon}
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-teal">{t.label}</span>
+            <h2 class="text-2xl font-extrabold text-slate mt-1">{t.name}</h2>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+          <div class="flex flex-col gap-6">
+            <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-card">
+              <h3 class="font-bold text-slate mb-3">What's happening</h3>
+              <p class="text-sm text-slate-mid leading-relaxed">{t.overview}</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-card">
+              <h3 class="font-bold text-slate mb-4">Common symptoms</h3>
+              <ul class="flex flex-col gap-3">
+                {t.symptoms.map(s => (
+                  <li class="flex items-start gap-3 text-sm text-slate-mid">
+                    <span class="w-2 h-2 rounded-full bg-teal flex-shrink-0 mt-1.5"></span>
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-teal-light rounded-2xl p-7 border border-teal/20">
+            <h3 class="font-bold text-slate mb-5 flex items-center gap-2">
+              <span class="text-teal">✓</span> What to do
+            </h3>
+            <ol class="flex flex-col gap-4">
+              {t.what_to_do.map((step, idx) => (
+                <li class="flex items-start gap-4">
+                  <span class="w-7 h-7 rounded-full bg-teal text-white text-xs font-bold flex items-center justify-center flex-shrink-0">
+                    {idx + 1}
+                  </span>
+                  <span class="text-sm text-slate-mid leading-relaxed">{step}</span>
+                </li>
+              ))}
+            </ol>
+            <div class="mt-7 pt-5 border-t border-teal/15">
+              <a href="/programs" class="btn-primary text-sm">Start a structured program →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <TrustSection />
+
+  <CTABanner
+    badge="Next Step"
+    title="Ready for a structured upper body program?"
+    body="Progressive, evidence-informed rehab programs designed specifically for elbow and shoulder tendon recovery."
+    primaryCta={{ label: 'View Programs →', href: '/programs' }}
+    secondaryCta={{ label: 'Work with Paul', href: '/book' }}
+    variant="teal"
+  />
+
+</BaseLayout>

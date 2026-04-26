@@ -1,0 +1,207 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import CTABanner  from '@components/CTABanner.astro';
+
+const philosophy = [
+  {
+    icon:  '📈',
+    title: 'Capacity over symptom chasing',
+    body:  'Chasing pain relief without addressing capacity is like fixing a leaking tap by turning off the water. The goal is always to build a tendon that can handle what life demands of it — not just one that temporarily stops hurting.',
+  },
+  {
+    icon:  '🔍',
+    title: 'Pain is information, not damage',
+    body:  'Modern pain science has fundamentally changed how we think about tendon pain. Pain reflects the nervous system\'s assessment of threat — and that threat perception can be changed. Understanding this is one of the most powerful tools in recovery.',
+  },
+  {
+    icon:  '🗺️',
+    title: 'Clarity reduces fear, fear prolongs pain',
+    body:  'Most people with tendon pain are stuck because they\'re confused and scared. When they understand what\'s happening, why, and what to do about it — their outcomes improve. That\'s the whole point of this site.',
+  },
+  {
+    icon:  '🤝',
+    title: 'Guided process beats guesswork',
+    body:  'Recovery isn\'t complicated once you have the right map. A structured, progressive approach removes the uncertainty, the setbacks, and the frustration — and replaces them with a clear path forward.',
+  },
+];
+
+const timeline = [
+  {
+    year:  'Early career',
+    title: 'RMT training and clinical focus',
+    body:  'Paul trained as a Registered Massage Therapist and quickly developed a deep interest in persistent pain — particularly musculoskeletal presentations that weren\'t responding to standard approaches.',
+  },
+  {
+    year:  'Clinical experience',
+    title: 'Specialising in tendon rehabilitation',
+    body:  'Working with runners, athletes, and active people navigating tendon pain, Paul developed a practice grounded in progressive loading, pain science education, and honest patient communication.',
+  },
+  {
+    year:  'PainFreeTendon',
+    title: 'Bringing the approach online',
+    body:  'Frustrated by the lack of clear, accessible guidance online for tendon pain, Paul launched PainFreeTendon — a hub for evidence-informed education, structured programs, and eventually virtual consultations.',
+  },
+];
+---
+
+<BaseLayout
+  title="About Paul Cramer, RMT"
+  description="Paul Cramer, RMT — Registered Massage Therapist and founder of PainFreeTendon. Clinician, educator, and advocate for evidence-informed tendon rehab."
+>
+
+  <!-- ABOUT HERO -->
+  <section class="bg-gradient-to-br from-[#f8fbff] via-[#eef5ff] to-[#f0fbf9] py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-teal block mb-5">
+            About
+          </span>
+          <h1 class="text-4xl md:text-5xl font-extrabold text-slate leading-tight tracking-tight mb-5">
+            Paul Cramer, <span class="text-blue">RMT</span>
+          </h1>
+          <p class="text-lg text-slate-mid leading-relaxed mb-4">
+            I'm a Registered Massage Therapist with a clinical focus on tendon pain and rehabilitation. I created PainFreeTendon because the gap between what the research says and what people actually hear is enormous — and it keeps people stuck.
+          </p>
+          <p class="text-lg text-slate-mid leading-relaxed mb-8">
+            My approach is simple: understand what the tendon needs, build capacity progressively, and stop being afraid of the pain that's guiding you through the process.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="/book" class="btn-primary">Book a Virtual Session →</a>
+            <a href="/resources" class="btn-outline">Browse Resources</a>
+          </div>
+        </div>
+
+        <!-- Profile card -->
+        <div class="flex justify-center md:justify-end">
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-card-md p-8 w-full max-w-sm">
+            <!-- Placeholder avatar -->
+            <div class="w-24 h-24 rounded-2xl bg-blue-light mx-auto mb-5 flex items-center justify-center">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+                <circle cx="22" cy="18" r="9" fill="#1D6FD8" opacity=".25"/>
+                <path d="M6 40C6 32.268 13.163 26 22 26C30.837 26 38 32.268 38 40" stroke="#1D6FD8" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate text-center mb-1">Paul Cramer</h3>
+            <p class="text-sm text-blue font-semibold text-center mb-5">Registered Massage Therapist (RMT)</p>
+
+            <div class="border-t border-gray-100 pt-5 flex flex-col gap-3">
+              {[
+                { icon: '🎓', text: 'Registered Massage Therapist' },
+                { icon: '🦵', text: 'Clinical focus: Tendon rehabilitation' },
+                { icon: '💻', text: 'Online programs & virtual consultations' },
+                { icon: '📍', text: 'PainFreeTendon founder' },
+              ].map(({ icon, text }) => (
+                <div class="flex items-center gap-3 text-sm text-slate-mid">
+                  <span class="text-base">{icon}</span>
+                  <span>{text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY THIS EXISTS -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <span class="badge">Why PainFreeTendon Exists</span>
+        <h2 class="section-title mb-6">The clarity that was missing</h2>
+
+        <div class="prose prose-slate max-w-none">
+          <p class="text-slate-mid leading-relaxed mb-5 text-base">
+            In clinical practice, I kept seeing the same story: someone comes in with Achilles pain they've had for two years. They've been told to rest it, ice it, stretch it, tape it. Nothing has worked — because none of those things addressed what the tendon actually needs.
+          </p>
+          <p class="text-slate-mid leading-relaxed mb-5 text-base">
+            When I explained the tendon loading model — that the pain wasn't because they were broken, but because the tendon's capacity hadn't kept up with the demands placed on it — something shifted. They stopped being afraid of movement and started working with their tendon instead of around it.
+          </p>
+          <p class="text-slate-mid leading-relaxed text-base">
+            PainFreeTendon is my attempt to make that shift available to everyone — not just the people lucky enough to find the right clinician. The information is clear, the programs are structured, and the goal is always the same: build capacity, stop managing symptoms.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section id="philosophy" class="py-20 bg-bg-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge badge-teal">Clinical Philosophy</span>
+      <h2 class="section-title mb-12">How I think about tendon pain</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {philosophy.map(p => (
+          <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-card hover:shadow-card-md hover:-translate-y-0.5 transition-all duration-200">
+            <div class="w-12 h-12 rounded-xl bg-blue-light flex items-center justify-center text-xl mb-5">
+              {p.icon}
+            </div>
+            <h3 class="font-bold text-slate mb-3">{p.title}</h3>
+            <p class="text-sm text-slate-soft leading-relaxed">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge">Background</span>
+      <h2 class="section-title mb-12">The path to PainFreeTendon</h2>
+
+      <div class="relative flex flex-col gap-0 max-w-3xl">
+        <!-- Vertical line -->
+        <div class="absolute left-5 top-5 bottom-5 w-0.5 bg-blue-light"></div>
+
+        {timeline.map((item, i) => (
+          <div class="relative flex gap-8 pb-10 last:pb-0">
+            <div class="w-10 h-10 rounded-full bg-blue text-white text-xs font-bold flex items-center justify-center flex-shrink-0 z-10">
+              {i + 1}
+            </div>
+            <div class="pt-1 pb-2">
+              <span class="text-xs font-bold uppercase tracking-widest text-blue block mb-1">{item.year}</span>
+              <h3 class="font-bold text-slate mb-2">{item.title}</h3>
+              <p class="text-sm text-slate-soft leading-relaxed">{item.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FUTURE VISION -->
+  <section class="py-20 bg-gradient-to-br from-slate via-[#1A3060] to-slate">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl">
+        <span class="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-5 bg-white/10 text-white/75">
+          What's Coming
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight mb-5">
+          The future of PainFreeTendon
+        </h2>
+        <p class="text-white/65 leading-relaxed mb-4">
+          The current phase of PainFreeTendon is focused on education and structured self-guided programs. The next phase brings personalised care online — virtual telehealth consultations, individualised loading programs, and outcome tracking that keeps you accountable.
+        </p>
+        <p class="text-white/65 leading-relaxed mb-8">
+          The vision: a platform where anyone, anywhere, can get access to expert tendon guidance without the barriers of geography, waitlists, or cost.
+        </p>
+        <a href="/book" class="btn-primary">Get notified when telehealth launches →</a>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    badge="Work with Paul"
+    title="Have a complex case or want 1-on-1 guidance?"
+    body="Virtual sessions with Paul give you an individualised assessment, a clear plan, and the confidence to follow through."
+    primaryCta={{ label: 'Book a Virtual Session →', href: '/book' }}
+    secondaryCta={{ label: 'Browse programs', href: '/programs' }}
+    variant="teal"
+  />
+
+</BaseLayout>

@@ -1,0 +1,234 @@
+---
+import BaseLayout   from '@layouts/BaseLayout.astro';
+import Hero         from '@components/Hero.astro';
+import PathwayCard  from '@components/PathwayCard.astro';
+import TendonCard   from '@components/TendonCard.astro';
+import TrustSection from '@components/TrustSection.astro';
+import CTABanner    from '@components/CTABanner.astro';
+
+const pathways = [
+  {
+    number:   '01 / Learn',
+    icon:     '📖',
+    title:    'Understand your tendon pain',
+    body:     'Read clear, jargon-free articles on how tendons work, why they become painful, and what the evidence says about recovery. Build your knowledge first.',
+    ctaLabel: 'Explore resources',
+    ctaHref:  '/resources',
+    variant:  'learn' as const,
+  },
+  {
+    number:   '02 / Program',
+    icon:     '🎯',
+    title:    'Follow a structured rehab program',
+    body:     'Step-by-step online programs built around progressive loading principles. Guided by the evidence, designed for real people — not just elite athletes.',
+    ctaLabel: 'Start your program',
+    ctaHref:  '/programs',
+    variant:  'program' as const,
+  },
+  {
+    number:   '03 / 1-on-1',
+    icon:     '🤝',
+    title:    'Work directly with Paul Cramer, RMT',
+    body:     'For complex cases or those who want personalised guidance, virtual sessions with Paul provide an individualised plan and the confidence to follow it.',
+    ctaLabel: 'Book a session',
+    ctaHref:  '/book',
+    variant:  'coach' as const,
+  },
+];
+
+const lowerTendons = [
+  { name: 'Achilles Tendon',                href: '/lower-body#achilles',  tag: 'Most common' },
+  { name: 'Patellar Tendon (Jumper\'s Knee)', href: '/lower-body#patellar'                       },
+  { name: 'Proximal Hamstring Tendon',      href: '/lower-body#hamstring'                     },
+];
+
+const upperTendons = [
+  { name: 'Lateral Epicondyle (Tennis Elbow)',  href: '/upper-body#tennis-elbow', tag: 'Most common' },
+  { name: 'Medial Epicondyle (Golfer\'s Elbow)', href: '/upper-body#golfers-elbow'                    },
+  { name: 'Rotator Cuff Tendons',               href: '/upper-body#rotator-cuff'                     },
+];
+
+const problemCards = [
+  {
+    icon:  '😓',
+    bg:    'bg-red-50',
+    title: '"Just rest it" — then it comes right back',
+    body:  'Rest reduces symptoms temporarily, but tendons need progressive load to actually adapt. Without it, the first return to activity brings the pain back.',
+  },
+  {
+    icon:  '😤',
+    bg:    'bg-yellow-50',
+    title: 'Conflicting advice leaves you paralysed',
+    body:  'One provider says rest. Another says stretch. Another says strengthen. Without a clear framework, most people oscillate between over-resting and over-doing.',
+  },
+  {
+    icon:  '🤔',
+    bg:    'bg-violet-50',
+    title: 'Scans and labels create fear, not clarity',
+    body:  'A scan showing "tendinopathy" sounds serious — but imaging changes often don\'t correlate with pain or function. You need a framework, not just a diagnosis.',
+  },
+];
+
+const shiftItems = {
+  from: [
+    '"My tendon is damaged — I need to protect it"',
+    '"Pain means something is wrong — stop immediately"',
+    '"Rest until it stops hurting, then return to normal"',
+    '"A scan will tell me what to do"',
+  ],
+  to: [
+    '"My tendon is adapting — I need to guide the process"',
+    '"Pain is information — it tells me about load tolerance"',
+    '"Progressive loading builds the capacity I need long-term"',
+    '"A program will tell me what to do"',
+  ],
+};
+
+const principles = [
+  { icon: '📈', title: 'Tendons adapt to load',   body: 'Tendons become stronger and more resilient when they\'re exposed to the right amount of stress, progressively over time.'  },
+  { icon: '🔍', title: 'Pain is information',      body: 'Tendon pain reflects load tolerance, not structural damage. Moderate pain during loading is often acceptable during rehab.'  },
+  { icon: '🗺️', title: 'Recovery needs a map',    body: 'Guessing doesn\'t work. A structured, stage-based approach removes the uncertainty from tendon recovery — for good.'         },
+];
+---
+
+<BaseLayout title="Home" description="Evidence-informed tendon rehab guidance from Paul Cramer, RMT. Understand what your tendon needs and build lasting capacity.">
+
+  <!-- HERO -->
+  <Hero
+    title="Tendon pain that keeps coming back? It's not about rest — it's about capacity."
+    titleAccent="capacity."
+    body="PainFreeTendon gives you clear, clinically grounded guidance so you can stop guessing, understand what your tendon actually needs, and start building real strength."
+    primaryCta={{ label: 'Start Here →', href: '/resources' }}
+    secondaryCta={{ label: 'Explore Programs', href: '/programs' }}
+    showCard={true}
+  />
+
+  <!-- ── THE PROBLEM ── -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge">The Problem</span>
+      <h2 class="section-title mb-3">Why most people stay stuck<br/>with tendon pain</h2>
+      <p class="section-sub max-w-lg mb-12">You've tried rest. You've tried pushing through. Neither worked — because neither addressed the real issue.</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {problemCards.map(c => (
+          <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-card hover:shadow-card-md hover:-translate-y-1 transition-all duration-200">
+            <div class={`w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-5 ${c.bg}`}>
+              {c.icon}
+            </div>
+            <h3 class="font-bold text-slate mb-2">{c.title}</h3>
+            <p class="text-sm text-slate-soft leading-relaxed">{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── THE SHIFT ── -->
+  <section class="py-20 bg-bg-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge badge-teal">The Shift</span>
+      <h2 class="section-title mb-3">A different way to think<br/>about tendon pain</h2>
+      <p class="section-sub max-w-lg mb-12">The question isn't "what's wrong with my tendon?" — it's "what does this tendon need to adapt?"</p>
+
+      <!-- Before / After -->
+      <div class="grid md:grid-cols-[1fr_auto_1fr] gap-6 items-center mb-12">
+        <div class="bg-white border-l-4 border-red-400 rounded-xl p-7">
+          <p class="text-xs font-bold uppercase tracking-widest text-red-400 mb-4">Old Thinking</p>
+          <ul class="flex flex-col gap-3">
+            {shiftItems.from.map(item => (
+              <li class="flex items-start gap-3 text-sm text-slate-mid">
+                <span class="w-2 h-2 rounded-full bg-red-400 mt-1.5 flex-shrink-0"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="w-12 h-12 rounded-full bg-blue flex items-center justify-center text-white text-lg font-bold flex-shrink-0 self-center mx-auto">
+          →
+        </div>
+
+        <div class="bg-white border-l-4 border-teal rounded-xl p-7">
+          <p class="text-xs font-bold uppercase tracking-widest text-teal mb-4">Capacity Thinking</p>
+          <ul class="flex flex-col gap-3">
+            {shiftItems.to.map(item => (
+              <li class="flex items-start gap-3 text-sm text-slate-mid">
+                <span class="w-2 h-2 rounded-full bg-teal mt-1.5 flex-shrink-0"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Principles -->
+      <div class="grid md:grid-cols-3 gap-6">
+        {principles.map(p => (
+          <div class="bg-white rounded-2xl p-7 border border-gray-100 text-center shadow-card">
+            <div class="w-13 h-13 rounded-2xl bg-blue-light flex items-center justify-center text-2xl mx-auto mb-4">
+              {p.icon}
+            </div>
+            <h3 class="font-bold text-slate mb-2">{p.title}</h3>
+            <p class="text-sm text-slate-soft leading-relaxed">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW THIS SITE HELPS ── -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge">How This Site Helps</span>
+      <h2 class="section-title mb-3">Three ways to move forward</h2>
+      <p class="section-sub max-w-lg mb-12">Whether you're just starting to understand your pain or ready for a structured program, there's a clear next step here.</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {pathways.map(p => <PathwayCard {...p} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BODY REGIONS ── -->
+  <section class="py-20 bg-bg-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge">Body Regions</span>
+      <h2 class="section-title mb-3">Find guidance for your tendon</h2>
+      <p class="section-sub max-w-lg mb-12">Select your area of pain for targeted education, loading guidelines, and program options.</p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <TendonCard
+          region="lower"
+          title="Lower Body Tendons"
+          subtitle="Hip, knee, ankle & foot"
+          tendons={lowerTendons}
+          ctaLabel="View all lower body guides"
+          ctaHref="/lower-body"
+        />
+        <TendonCard
+          region="upper"
+          title="Upper Body Tendons"
+          subtitle="Elbow, wrist & shoulder"
+          tendons={upperTendons}
+          ctaLabel="View all upper body guides"
+          ctaHref="/upper-body"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUST ── -->
+  <TrustSection />
+
+  <!-- ── FINAL CTA ── -->
+  <CTABanner
+    badge="Ready to Start?"
+    title="Get clear on what your tendon actually needs"
+    body="No more guessing. No more conflicting advice. Start with a clear foundation — and a path forward that actually works."
+    primaryCta={{ label: 'Start Learning →', href: '/resources' }}
+    secondaryCta={{ label: 'Explore Programs', href: '/programs' }}
+    variant="teal"
+  />
+
+</BaseLayout>

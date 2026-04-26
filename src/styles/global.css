@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-slate bg-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-slate;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-blue text-white font-semibold px-6 py-3 rounded-lg
+           hover:bg-blue-dark hover:-translate-y-0.5 hover:shadow-card-md transition-all duration-200;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border-2 border-blue text-blue font-semibold px-6 py-3
+           rounded-lg hover:bg-blue-light hover:-translate-y-0.5 transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-blue font-semibold
+           hover:gap-3 transition-all duration-200;
+  }
+
+  .badge {
+    @apply inline-block bg-blue-light text-blue text-xs font-bold uppercase tracking-widest
+           px-3 py-1 rounded-full mb-4;
+  }
+
+  .badge-teal {
+    @apply bg-teal-light text-teal;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-extrabold text-slate leading-tight tracking-tight;
+  }
+
+  .section-sub {
+    @apply text-slate-soft text-lg mt-3 leading-relaxed;
+  }
+
+  .card {
+    @apply bg-white rounded-card border border-gray-100 shadow-card
+           hover:shadow-card-md hover:-translate-y-1 transition-all duration-200;
+  }
+}

@@ -1,0 +1,175 @@
+---
+import BaseLayout  from '@layouts/BaseLayout.astro';
+import Hero        from '@components/Hero.astro';
+import CTABanner   from '@components/CTABanner.astro';
+import TrustSection from '@components/TrustSection.astro';
+
+const tendons = [
+  {
+    id:       'achilles',
+    name:      'Achilles Tendon',
+    label:     'Most common lower-body tendinopathy',
+    icon:      '🦶',
+    overview:  'The Achilles tendon connects your calf muscles to the heel bone. It manages enormous loads during walking, running, and jumping — making it one of the most commonly overloaded tendons in the body.',
+    symptoms: [
+      'Morning stiffness and pain at the back of the heel',
+      'Pain that warms up during activity and returns after',
+      'Gradual onset of pain with increased training load',
+      'Tenderness to direct palpation along the tendon',
+    ],
+    what_to_do: [
+      'Load management — reduce, don\'t eliminate, aggravating activity',
+      'Isometric calf holds for early pain relief (5 × 45s, 70% effort)',
+      'Progress to heavy slow resistance: bilateral → single-leg heel raises',
+      'Address training volume and footwear as contributing factors',
+    ],
+  },
+  {
+    id:       'patellar',
+    name:      'Patellar Tendon',
+    label:     'Jumper\'s Knee',
+    icon:      '🦵',
+    overview:  'The patellar tendon connects the quadriceps to the shin bone and is critical for jumping, squatting, and stair climbing. Overload is especially common in jumping athletes and people who ramp activity too quickly.',
+    symptoms: [
+      'Pain at the bottom of the kneecap (inferior pole of patella)',
+      'Pain with jumping, landing, and deep knee bends',
+      'Stiffness after prolonged sitting or first steps in the morning',
+      'Often gradual onset linked to training spike',
+    ],
+    what_to_do: [
+      'Isometric leg press or wall sit holds for immediate pain reduction',
+      'Decline board single-leg squats to target patellar tendon loading',
+      'Heavy resistance training through full range — slow tempo (3-4 seconds)',
+      'Monitor training volume; avoid back-to-back high-load sessions',
+    ],
+  },
+  {
+    id:       'hamstring',
+    name:      'Proximal Hamstring Tendon',
+    label:     'High hamstring tendinopathy',
+    icon:      '🏃',
+    overview:  'The proximal hamstring tendon attaches to the sitting bone (ischial tuberosity) and is commonly irritated by prolonged sitting and hip-flexion activities like running hills or yoga.',
+    symptoms: [
+      'Deep buttock pain, especially when sitting on hard surfaces',
+      'Pain with sustained hip flexion (sitting, stairs, hills)',
+      'Uncomfortable running — worse uphill or at speed',
+      'Localised tenderness at the sitting bone',
+    ],
+    what_to_do: [
+      'Reduce compressive loads: avoid deep hip flexion sitting, foam rolling the area',
+      'Isometric hamstring holds (supine or bridge position)',
+      'Progress to Nordic hamstring curls and Romanian deadlifts — with a forward lean',
+      'Patience: proximal hamstring is a slow responder — allow 3–6 months',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Lower Body Tendons"
+  description="Guidance for Achilles, patellar, and proximal hamstring tendinopathy. Understand what's happening and what to do about it."
+>
+
+  <!-- HERO -->
+  <Hero
+    eyebrow="Lower body tendons"
+    title="Achilles, patellar & hamstring tendinopathy"
+    body="Understand why lower body tendons become painful, what the pain actually means, and how to build back the capacity they need to let you move freely again."
+    primaryCta={{ label: 'Jump to a tendon', href: '#achilles' }}
+    secondaryCta={{ label: 'View programs', href: '/programs' }}
+  />
+
+  <!-- Overview -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl">
+        <span class="badge">Overview</span>
+        <h2 class="section-title mb-4">Why lower body tendons get overloaded</h2>
+        <p class="text-slate-mid leading-relaxed mb-4">
+          Lower body tendons carry some of the highest loads in the body. Every step, squat, and jump asks these structures to store and release energy — and when training load spikes faster than the tendon can adapt, pain follows.
+        </p>
+        <p class="text-slate-mid leading-relaxed">
+          The good news: tendons respond exceptionally well to progressive loading when done correctly. The goal isn't to rest until the pain disappears — it's to find the level of load the tendon can tolerate and systematically build from there.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Individual tendons -->
+  {tendons.map((t, i) => (
+    <section id={t.id} class={`py-20 ${i % 2 === 0 ? 'bg-bg-alt' : 'bg-white'}`}>
+      <div class="max-w-6xl mx-auto px-6">
+
+        <!-- Header -->
+        <div class="flex items-start gap-4 mb-10">
+          <div class="w-14 h-14 rounded-2xl bg-blue-light flex items-center justify-center text-2xl flex-shrink-0">
+            {t.icon}
+          </div>
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-blue">{t.label}</span>
+            <h2 class="text-2xl font-extrabold text-slate mt-1">{t.name}</h2>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+          <!-- Overview + Symptoms -->
+          <div class="flex flex-col gap-6">
+            <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-card">
+              <h3 class="font-bold text-slate mb-3">What's happening</h3>
+              <p class="text-sm text-slate-mid leading-relaxed">{t.overview}</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-card">
+              <h3 class="font-bold text-slate mb-4">Common symptoms</h3>
+              <ul class="flex flex-col gap-3">
+                {t.symptoms.map(s => (
+                  <li class="flex items-start gap-3 text-sm text-slate-mid">
+                    <span class="w-2 h-2 rounded-full bg-blue flex-shrink-0 mt-1.5"></span>
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- What to do -->
+          <div class="bg-teal-light rounded-2xl p-7 border border-teal/20">
+            <h3 class="font-bold text-slate mb-5 flex items-center gap-2">
+              <span class="text-teal">✓</span> What to do
+            </h3>
+            <ol class="flex flex-col gap-4">
+              {t.what_to_do.map((step, idx) => (
+                <li class="flex items-start gap-4">
+                  <span class="w-7 h-7 rounded-full bg-teal text-white text-xs font-bold flex items-center justify-center flex-shrink-0">
+                    {idx + 1}
+                  </span>
+                  <span class="text-sm text-slate-mid leading-relaxed">{step}</span>
+                </li>
+              ))}
+            </ol>
+
+            <div class="mt-7 pt-5 border-t border-teal/15">
+              <a href="/programs" class="btn-primary text-sm">
+                Start a structured program →
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <TrustSection />
+
+  <CTABanner
+    badge="Next Step"
+    title="Ready for a program built around your tendon?"
+    body="Move from understanding to action. Our structured programs give you a clear, progressive path from pain to full capacity."
+    primaryCta={{ label: 'View Programs →', href: '/programs' }}
+    secondaryCta={{ label: 'Work with Paul', href: '/book' }}
+    variant="teal"
+  />
+
+</BaseLayout>

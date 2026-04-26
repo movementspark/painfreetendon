@@ -1,0 +1,97 @@
+---
+const columns = [
+  {
+    heading: 'Body Regions',
+    links: [
+      { label: 'Lower Body',          href: '/lower-body'      },
+      { label: 'Upper Body',          href: '/upper-body'      },
+      { label: 'Achilles Tendon',     href: '/lower-body#achilles'    },
+      { label: 'Tennis Elbow',        href: '/upper-body#tennis-elbow' },
+      { label: 'Patellar Tendon',     href: '/lower-body#patellar'    },
+    ],
+  },
+  {
+    heading: 'Resources',
+    links: [
+      { label: 'Articles',     href: '/resources'          },
+      { label: 'Programs',     href: '/programs'           },
+      { label: 'Free Guides',  href: '/resources#guides'   },
+      { label: 'Videos',       href: '/resources#videos'   },
+      { label: 'FAQ',          href: '/resources#faq'      },
+    ],
+  },
+  {
+    heading: 'About',
+    links: [
+      { label: 'About Paul',      href: '/about'              },
+      { label: 'Philosophy',      href: '/about#philosophy'   },
+      { label: 'Book a Session',  href: '/book'               },
+      { label: 'Contact',         href: '/contact'            },
+    ],
+  },
+];
+---
+
+<footer class="bg-slate text-white/70">
+  <div class="max-w-6xl mx-auto px-6 pt-16 pb-8">
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-14">
+
+      <!-- Brand col -->
+      <div class="md:col-span-1">
+        <a href="/" class="flex items-center gap-2.5 font-extrabold text-white text-base no-underline mb-4">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <rect width="30" height="30" rx="8" fill="rgba(255,255,255,.1)"/>
+            <path d="M15 5C15 5 8.5 10 8.5 16.5C8.5 20.4 11.6 23.5 15 23.5C18.4 23.5 21.5 20.4 21.5 16.5C21.5 10 15 5 15 5Z"
+                  fill="none" stroke="rgba(255,255,255,.75)" stroke-width="1.6"/>
+            <path d="M15 12V20" stroke="#0D9A8A" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12.5 17H17.5" stroke="#0D9A8A" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          PainFreeTendon
+        </a>
+        <p class="text-sm leading-relaxed text-white/55 max-w-[220px]">
+          Evidence-informed tendon rehab guidance to help you build capacity, not just manage symptoms.
+        </p>
+        <div class="mt-6 text-xs text-white/40 font-medium">Paul Cramer, RMT</div>
+      </div>
+
+      <!-- Link columns -->
+      {columns.map(col => (
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">
+            {col.heading}
+          </h4>
+          <ul class="flex flex-col gap-2.5">
+            {col.links.map(({ label, href }) => (
+              <li>
+                <a
+                  href={href}
+                  class="text-sm text-white/60 hover:text-white transition-colors duration-150"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
+      <span>© {new Date().getFullYear()} PainFreeTendon · Paul Cramer, RMT · All rights reserved</span>
+      <div class="flex gap-6">
+        <a href="/privacy" class="hover:text-white/60 transition-colors">Privacy Policy</a>
+        <a href="/terms"   class="hover:text-white/60 transition-colors">Terms of Use</a>
+        <a href="/contact" class="hover:text-white/60 transition-colors">Contact</a>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <p class="mt-6 text-xs text-white/25 leading-relaxed max-w-2xl">
+      The information on this site is for educational purposes only and does not constitute medical advice.
+      Always consult a qualified healthcare professional for diagnosis and personalised treatment.
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,233 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import CTABanner  from '@components/CTABanner.astro';
+
+const articles = [
+  {
+    category: 'Pain Science',
+    color:    'bg-blue-light text-blue',
+    title:    'Why Tendon Pain Isn\'t About Damage',
+    excerpt:  'Understanding the difference between tendon irritability and structural damage — and why this changes everything about how you approach recovery.',
+    time:     '6 min read',
+    href:     '#',
+  },
+  {
+    category: 'Loading',
+    color:    'bg-teal-light text-teal',
+    title:    'The Isometric Exercise Explained',
+    excerpt:  'Isometric exercises are often the first step in tendon rehab — but why? Here\'s the evidence behind the method and exactly how to do them correctly.',
+    time:     '5 min read',
+    href:     '#',
+  },
+  {
+    category: 'Achilles',
+    color:    'bg-blue-light text-blue',
+    title:    'Heel Raises for Achilles Tendinopathy: A Complete Guide',
+    excerpt:  'The research on heavy slow resistance for Achilles tendinopathy is strong. This guide walks you through every stage — from bilateral to single-leg, from bodyweight to loaded.',
+    time:     '8 min read',
+    href:     '#',
+  },
+  {
+    category: 'Tennis Elbow',
+    color:    'bg-teal-light text-teal',
+    title:    'Tennis Elbow: Why Rest Makes It Worse',
+    excerpt:  'The paradox of lateral epicondylitis — rest reduces pain in the short term but leaves the tendon unable to handle load. Here\'s the better approach.',
+    time:     '5 min read',
+    href:     '#',
+  },
+  {
+    category: 'Recovery',
+    color:    'bg-orange-50 text-orange-600',
+    title:    'Managing a Flare-Up Without Panic',
+    excerpt:  'A flare-up during tendon rehab isn\'t failure — it\'s information. Here\'s how to respond calmly, adjust your load, and keep progressing.',
+    time:     '4 min read',
+    href:     '#',
+  },
+  {
+    category: 'Loading',
+    color:    'bg-violet-50 text-violet-600',
+    title:    'The Stages of Tendon Rehab: From Isometrics to Sport',
+    excerpt:  'A clear breakdown of the four stages of tendon rehabilitation — reactive, dysrepair, degenerative, and return to sport — and what each one requires.',
+    time:     '9 min read',
+    href:     '#',
+  },
+];
+
+const guides = [
+  {
+    icon:  '📄',
+    title: 'Achilles Load Guide',
+    desc:  'A one-page reference for managing Achilles load during your rehab program.',
+    tag:   'Coming soon',
+  },
+  {
+    icon:  '📄',
+    title: 'Tennis Elbow Starter Guide',
+    desc:  'First steps for lateral epicondylitis — what to do in week one.',
+    tag:   'Coming soon',
+  },
+  {
+    icon:  '📄',
+    title: 'Pain Monitoring Guide',
+    desc:  'How to use the numeric rating scale intelligently during loading.',
+    tag:   'Coming soon',
+  },
+];
+
+const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'Recovery'];
+---
+
+<BaseLayout
+  title="Resources"
+  description="Evidence-informed articles, guides, and videos about tendon pain, progressive loading, and rehabilitation from Paul Cramer, RMT."
+>
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-br from-[#f8fbff] to-[#eef5ff] py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="text-xs font-bold uppercase tracking-widest text-teal block mb-4">Resources</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-slate leading-tight tracking-tight mb-5">
+        Everything you need to<br/>understand tendon rehab
+      </h1>
+      <p class="text-lg text-slate-mid max-w-xl leading-relaxed">
+        Articles, guides, and future video content — all built around one goal: giving you a clear, evidence-informed understanding of what your tendon needs.
+      </p>
+    </div>
+  </section>
+
+  <!-- FILTER TAGS -->
+  <section class="sticky top-16 z-40 bg-white border-b border-gray-100 py-4">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex gap-2 overflow-x-auto scrollbar-hide">
+        {topics.map((t, i) => (
+          <button class:list={[
+            'flex-shrink-0 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full transition-colors duration-150',
+            i === 0
+              ? 'bg-blue text-white'
+              : 'bg-bg-alt text-slate-mid hover:bg-blue-light hover:text-blue',
+          ]}>
+            {t}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLES -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge">Articles</span>
+      <h2 class="section-title mb-10">Latest articles</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {articles.map(a => (
+          <article class="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden flex flex-col hover:shadow-card-md hover:-translate-y-1 transition-all duration-200">
+            <!-- Placeholder image area -->
+            <div class="h-36 bg-gradient-to-br from-bg-alt to-blue-light flex items-center justify-center">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity=".3">
+                <rect x="8" y="8" width="32" height="32" rx="6" stroke="#1D6FD8" stroke-width="2"/>
+                <path d="M16 20H32M16 26H28M16 32H24" stroke="#1D6FD8" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex items-center justify-between mb-3">
+                <span class={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${a.color}`}>
+                  {a.category}
+                </span>
+                <span class="text-xs text-slate-soft">{a.time}</span>
+              </div>
+              <h3 class="font-bold text-slate mb-2 leading-snug">{a.title}</h3>
+              <p class="text-sm text-slate-soft leading-relaxed flex-1 mb-5">{a.excerpt}</p>
+              <a href={a.href} class="btn-ghost text-sm text-blue">
+                Read article
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDES / DOWNLOADS -->
+  <section id="guides" class="py-20 bg-bg-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge badge-teal">Free Guides</span>
+      <h2 class="section-title mb-4">Downloadable guides</h2>
+      <p class="section-sub max-w-md mb-10">Practical one-page references you can save and use during your rehab program.</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {guides.map(g => (
+          <div class="bg-white rounded-2xl border border-gray-100 p-7 shadow-card flex flex-col gap-4">
+            <div class="w-12 h-12 rounded-xl bg-teal-light flex items-center justify-center text-xl">
+              {g.icon}
+            </div>
+            <div>
+              <h3 class="font-bold text-slate mb-1.5">{g.title}</h3>
+              <p class="text-sm text-slate-soft leading-relaxed">{g.desc}</p>
+            </div>
+            <span class="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-bg-alt text-slate-soft self-start">
+              {g.tag}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Email capture -->
+      <div class="mt-12 bg-blue-light rounded-2xl p-8 border border-blue/15">
+        <div class="max-w-lg">
+          <h3 class="text-xl font-bold text-slate mb-2">Get guides when they launch</h3>
+          <p class="text-sm text-slate-mid mb-5">Sign up to receive new guides and articles directly in your inbox — no fluff, just clear tendon rehab education.</p>
+          <form class="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              placeholder="Your email address"
+              class="flex-1 px-4 py-3 rounded-lg border border-blue/20 text-sm text-slate bg-white focus:outline-none focus:ring-2 focus:ring-blue/30"
+            />
+            <button type="submit" class="btn-primary text-sm whitespace-nowrap">
+              Subscribe →
+            </button>
+          </form>
+          <p class="text-xs text-slate-soft mt-3">No spam. Unsubscribe any time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO (placeholder) -->
+  <section id="videos" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge">Video</span>
+      <h2 class="section-title mb-4">Video content</h2>
+      <p class="section-sub max-w-md mb-10">Video explanations and exercise demonstrations — coming soon.</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {[1,2,3].map(() => (
+          <div class="bg-bg-alt rounded-2xl aspect-video flex items-center justify-center border border-gray-100">
+            <div class="text-center">
+              <div class="w-14 h-14 rounded-full bg-white border border-gray-100 shadow-card flex items-center justify-center mx-auto mb-3">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M8 6L17 11L8 16V6Z" fill="#1D6FD8"/>
+                </svg>
+              </div>
+              <p class="text-xs text-slate-soft font-medium">Coming soon</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    badge="Ready for a program?"
+    title="Turn this education into action"
+    body="Browse structured rehab programs built around the same principles as everything you've read here."
+    primaryCta={{ label: 'View Programs →', href: '/programs' }}
+    secondaryCta={{ label: 'Work with Paul', href: '/book' }}
+    variant="dark"
+  />
+
+</BaseLayout>

@@ -1,0 +1,46 @@
+---
+interface Props {
+  number:      string;
+  icon:        string;
+  title:       string;
+  body:        string;
+  ctaLabel:    string;
+  ctaHref:     string;
+  variant:     'learn' | 'program' | 'coach';
+}
+
+const {
+  number, icon, title, body, ctaLabel, ctaHref, variant,
+} = Astro.props;
+
+const variantStyles = {
+  learn:   { wrap: 'bg-blue-light border-blue/20',    num: 'text-blue',    link: 'text-blue'    },
+  program: { wrap: 'bg-teal-light border-teal/20',    num: 'text-teal',    link: 'text-teal'    },
+  coach:   { wrap: 'bg-orange-50 border-orange-200',  num: 'text-orange-500', link: 'text-orange-500' },
+};
+
+const s = variantStyles[variant];
+---
+
+<div
+  class={`rounded-2xl p-8 border flex flex-col transition-all duration-200 hover:-translate-y-1 hover:shadow-card-md ${s.wrap}`}
+>
+  <p class={`text-xs font-bold uppercase tracking-widest mb-3 ${s.num}`}>{number}</p>
+
+  <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-2xl shadow-sm mb-5">
+    {icon}
+  </div>
+
+  <h3 class="text-xl font-extrabold text-slate mb-3">{title}</h3>
+  <p class="text-sm text-slate-mid leading-relaxed flex-1 mb-6">{body}</p>
+
+  <a
+    href={ctaHref}
+    class={`inline-flex items-center gap-1.5 text-sm font-semibold transition-all duration-150 hover:gap-3 ${s.link}`}
+  >
+    {ctaLabel}
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>

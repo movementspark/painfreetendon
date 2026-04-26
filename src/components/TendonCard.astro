@@ -1,0 +1,84 @@
+---
+interface Tendon {
+  name: string;
+  href: string;
+  tag?: string; // e.g. "Most common"
+}
+
+interface Props {
+  region:    'lower' | 'upper';
+  title:     string;
+  subtitle:  string;
+  tendons:   Tendon[];
+  ctaLabel:  string;
+  ctaHref:   string;
+}
+
+const { region, title, subtitle, tendons, ctaLabel, ctaHref } = Astro.props;
+
+const isLower = region === 'lower';
+const accentColor  = isLower ? 'text-blue'      : 'text-teal';
+const dotColor     = isLower ? 'bg-blue'         : 'bg-teal';
+const iconBg       = isLower ? 'bg-blue-light'   : 'bg-teal-light';
+const rowHover     = isLower ? 'hover:bg-blue-light' : 'hover:bg-teal-light';
+---
+
+<div class="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden hover:shadow-card-md hover:-translate-y-0.5 transition-all duration-200">
+
+  <!-- Header -->
+  <div class="px-7 pt-7 pb-5 flex items-center gap-4">
+    <div class={`w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 ${iconBg}`}>
+      {isLower
+        ? (
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <path d="M13 3V19M9 13L13 19L17 13" stroke="#1D6FD8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7 21H19" stroke="#1D6FD8" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        ) : (
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <path d="M13 23V7M9 13L13 7L17 13" stroke="#0D9A8A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7 5H19" stroke="#0D9A8A" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        )
+      }
+    </div>
+    <div>
+      <h3 class="text-lg font-extrabold text-slate">{title}</h3>
+      <p class="text-xs text-slate-soft mt-0.5">{subtitle}</p>
+    </div>
+  </div>
+
+  <!-- Tendon list -->
+  <div class="px-7 flex flex-col gap-2 mb-7">
+    {tendons.map(t => (
+      <a
+        href={t.href}
+        class={`flex items-center gap-3 px-4 py-3 rounded-xl bg-bg-alt transition-colors duration-150 group ${rowHover}`}
+      >
+        <span class={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${dotColor}`}></span>
+        <span class="text-sm font-semibold text-slate flex-1 group-hover:text-slate">{t.name}</span>
+        {t.tag && (
+          <span class={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${iconBg} ${accentColor}`}>
+            {t.tag}
+          </span>
+        )}
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="text-slate-soft group-hover:text-slate transition-colors">
+          <path d="M3 7H11M8 4L11 7L8 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    ))}
+  </div>
+
+  <!-- Footer CTA -->
+  <div class="border-t border-gray-100 px-7 py-4">
+    <a
+      href={ctaHref}
+      class={`btn-ghost text-sm ${accentColor}`}
+    >
+      {ctaLabel}
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+---
+const pillars = [
+  {
+    icon: '📚',
+    title: 'Grounded in current research',
+    body:  'Every recommendation on this site reflects the latest tendinopathy science — load-based rehab, pain science education, and progressive capacity building.',
+  },
+  {
+    icon: '🎓',
+    title: 'Paul Cramer, RMT',
+    body:  'A Registered Massage Therapist with deep clinical focus on tendon rehabilitation, translating complex research into practical, accessible guidance.',
+  },
+  {
+    icon: '✅',
+    title: 'Practical, not theoretical',
+    body:  'Clear next steps, not academic abstracts. Designed for people navigating real life — not a clinical protocol for researchers.',
+  },
+];
+---
+
+<section class="bg-gradient-to-br from-slate via-[#1A3060] to-slate py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4 bg-white/10 text-white/75">
+        Why Trust This
+      </span>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight mb-3">
+        Evidence-informed.<br/>Clinically grounded.
+      </h2>
+      <p class="text-white/60 text-base max-w-lg mx-auto leading-relaxed">
+        PainFreeTendon bridges the gap between clinical research and the guidance real people actually need.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {pillars.map(p => (
+        <div class="bg-white/7 border border-white/10 rounded-2xl p-7">
+          <div class="w-11 h-11 rounded-xl bg-teal/20 border border-teal/30 flex items-center justify-center text-xl mb-5">
+            {p.icon}
+          </div>
+          <h3 class="text-base font-bold text-white mb-2">{p.title}</h3>
+          <p class="text-sm text-white/55 leading-relaxed">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
