@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Privacy Policy" description="Privacy policy for PainFreeTendon.">
+  <section class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h1 class="text-3xl font-extrabold text-slate mb-2">Privacy Policy</h1>
+      <p class="text-sm text-slate-soft mb-10">Last updated: {new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+
+      <div class="prose prose-slate max-w-none flex flex-col gap-8 text-slate-mid text-sm leading-relaxed">
+
+        <div>
+          <h2 class="text-lg font-bold text-slate mb-2">1. Information we collect</h2>
+          <p>PainFreeTendon collects information you provide directly — such as your name and email address when you sign up for updates, book a session, or contact us via a form. We also collect standard analytics data (pages visited, referral source, device type) to understand how people use the site.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-slate mb-2">2. How we use your information</h2>
+          <p>Your information is used to respond to enquiries, send program updates or newsletters you've opted into, and improve the content on this site. We do not sell your data to third parties.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-slate mb-2">3. Cookies</h2>
+          <p>This site uses minimal cookies for analytics purposes only. No advertising cookies are used.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-slate mb-2">4. Your rights</h2>
+          <p>You may request to view, update, or delete any personal data we hold about you at any time by contacting us at paul@movementspark.com.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-slate mb-2">5. Contact</h2>
+          <p>For any privacy-related questions, email: <a href="mailto:paul@movementspark.com" class="text-blue hover:underline">paul@movementspark.com</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

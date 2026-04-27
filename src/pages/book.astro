@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Book a Session"
+  description="Book a virtual 1-on-1 session with Paul Cramer, RMT. Get a personalised tendon rehab assessment and a clear plan to move forward."
+>
+
+  <section class="bg-gradient-to-br from-[#f8fbff] via-[#eef5ff] to-[#f0fbf9] py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-start">
+
+        <!-- Copy -->
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-teal block mb-5">Work with Paul</span>
+          <h1 class="text-4xl md:text-5xl font-extrabold text-slate leading-tight tracking-tight mb-5">
+            Book a virtual session
+          </h1>
+          <p class="text-lg text-slate-mid leading-relaxed mb-5">
+            A 60-minute virtual session gives you a structured assessment of your tendon pain, a clear explanation of what's happening, and a personalised loading plan you can start immediately.
+          </p>
+          <p class="text-base text-slate-mid leading-relaxed mb-8">
+            No waiting room. No referral needed. Just clear, evidence-informed guidance from an RMT who specialises in tendon rehabilitation.
+          </p>
+
+          <!-- What's included -->
+          <div class="flex flex-col gap-3 mb-8">
+            {[
+              'Full history and symptom assessment',
+              'Clear explanation of what\'s driving your pain',
+              'Personalised progressive loading plan',
+              'Exercise prescription with video guidance',
+              'Follow-up email summary of your plan',
+            ].map(item => (
+              <div class="flex items-start gap-3 text-sm text-slate-mid">
+                <div class="w-5 h-5 rounded-full bg-teal-light flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                    <path d="M2 5.5L4.5 8L9 3" stroke="#0D9A8A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                {item}
+              </div>
+            ))}
+          </div>
+
+          <div class="bg-blue-light rounded-2xl p-6 border border-blue/10">
+            <p class="text-sm font-bold text-slate mb-1">Virtual sessions — conducted via video call</p>
+            <p class="text-sm text-slate-soft">Available to anyone, anywhere. All you need is a device with a camera.</p>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <div class="bg-white rounded-2xl shadow-card-md border border-gray-100 p-8">
+          <h2 class="text-xl font-extrabold text-slate mb-2">Request a session</h2>
+          <p class="text-sm text-slate-soft mb-6">Fill in the form and Paul will be in touch within 24 hours to confirm a time.</p>
+
+          <form class="flex flex-col gap-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-semibold text-slate-mid block mb-1.5">First name</label>
+                <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue/20" />
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-mid block mb-1.5">Last name</label>
+                <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue/20" />
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs font-semibold text-slate-mid block mb-1.5">Email address</label>
+              <input type="email" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue/20" />
+            </div>
+
+            <div>
+              <label class="text-xs font-semibold text-slate-mid block mb-1.5">Which tendon is giving you trouble?</label>
+              <select class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-slate-mid focus:outline-none focus:ring-2 focus:ring-blue/20 bg-white">
+                <option value="">Select a tendon...</option>
+                <option>Achilles tendon</option>
+                <option>Patellar tendon (jumper's knee)</option>
+                <option>Proximal hamstring</option>
+                <option>Tennis elbow (lateral epicondyle)</option>
+                <option>Golfer's elbow (medial epicondyle)</option>
+                <option>Rotator cuff / shoulder</option>
+                <option>Other / not sure</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-xs font-semibold text-slate-mid block mb-1.5">How long have you had symptoms?</label>
+              <select class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-slate-mid focus:outline-none focus:ring-2 focus:ring-blue/20 bg-white">
+                <option value="">Select...</option>
+                <option>Less than 6 weeks</option>
+                <option>6 weeks – 3 months</option>
+                <option>3 – 6 months</option>
+                <option>6 months – 1 year</option>
+                <option>More than 1 year</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-xs font-semibold text-slate-mid block mb-1.5">Anything else you'd like Paul to know?</label>
+              <textarea rows="3" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue/20 resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary justify-center text-sm mt-2">
+              Send request →
+            </button>
+
+            <p class="text-xs text-slate-soft text-center">Paul will respond within 24 hours to confirm your session.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

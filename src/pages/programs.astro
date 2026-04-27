@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTABanner  from '../components/CTABanner.astro';
+---
+
+<BaseLayout
+  title="Programs"
+  description="Structured tendon rehab programs by Paul Cramer, RMT. Evidence-informed, progressive loading programs for Achilles, patellar, elbow and shoulder tendinopathy."
+>
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-br from-[#f8fbff] via-[#eef5ff] to-[#f0fbf9] py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6 text-center max-w-3xl mx-auto">
+      <span class="text-xs font-bold uppercase tracking-widest text-teal block mb-5">Programs</span>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-slate leading-tight tracking-tight mb-5">
+        Structured rehab programs that actually work
+      </h1>
+      <p class="text-lg text-slate-mid leading-relaxed mb-8 max-w-2xl mx-auto">
+        Each program is built around progressive loading principles — the same evidence-based approach used in clinical practice, made accessible for anyone dealing with tendon pain.
+      </p>
+    </div>
+  </section>
+
+  <!-- COMING SOON CARDS -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+
+        {[
+          { icon: '🦶', title: 'Achilles Tendinopathy Program',    body: 'A 12-week progressive loading program for Achilles tendon recovery — from isometrics to full return to activity.', tag: 'Launching soon' },
+          { icon: '🦵', title: 'Patellar Tendon Program',          body: 'Structured rehab for jumper\'s knee using decline squats, heavy slow resistance, and sport-specific loading stages.', tag: 'Launching soon' },
+          { icon: '🎾', title: 'Tennis Elbow Program',             body: 'A step-by-step program for lateral epicondylitis — from pain relief to full grip strength and return to sport.', tag: 'Launching soon' },
+        ].map(p => (
+          <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-card flex flex-col">
+            <div class="w-14 h-14 rounded-2xl bg-blue-light flex items-center justify-center text-2xl mb-5">
+              {p.icon}
+            </div>
+            <span class="text-xs font-bold uppercase tracking-widest text-teal mb-3 block">{p.tag}</span>
+            <h3 class="text-lg font-extrabold text-slate mb-3">{p.title}</h3>
+            <p class="text-sm text-slate-soft leading-relaxed flex-1 mb-6">{p.body}</p>
+            <div class="bg-blue-light rounded-xl px-4 py-3 text-sm text-blue font-semibold text-center">
+              Notify me when available →
+            </div>
+          </div>
+        ))}
+
+      </div>
+
+      <!-- Email capture -->
+      <div class="mt-14 bg-teal-light rounded-2xl p-10 border border-teal/15 text-center max-w-2xl mx-auto">
+        <h2 class="text-2xl font-extrabold text-slate mb-3">Be first to know when programs launch</h2>
+        <p class="text-slate-mid text-sm mb-6">Drop your email below and I'll send you a note the moment the first program is available — plus early access pricing.</p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input
+            type="email"
+            placeholder="Your email address"
+            class="flex-1 px-4 py-3 rounded-lg border border-teal/20 text-sm text-slate bg-white focus:outline-none focus:ring-2 focus:ring-teal/30"
+          />
+          <button type="submit" class="btn-primary whitespace-nowrap text-sm">
+            Notify me →
+          </button>
+        </form>
+        <p class="text-xs text-slate-soft mt-3">No spam. Unsubscribe any time.</p>
+      </div>
+
+      <!-- Mastera link -->
+      <div class="mt-10 text-center">
+        <p class="text-sm text-slate-soft mb-3">Already enrolled? Access your program here:</p>
+        <a
+          href="https://mastera.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-outline text-sm"
+        >
+          Go to Mastera →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <CTABanner
+    badge="Not sure where to start?"
+    title="Book a 1-on-1 session with Paul"
+    body="If you're not sure which program is right for your situation, a virtual session gives you a personalised assessment and a clear starting point."
+    primaryCta={{ label: 'Book a session →', href: '/book' }}
+    secondaryCta={{ label: 'Browse resources', href: '/resources' }}
+    variant="teal"
+  />
+
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Terms of Use" description="Terms of use for PainFreeTendon.">
+  <section class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h1 class="text-3xl font-extrabold text-slate mb-2">Terms of Use</h1>
+      <p class="text-sm text-slate-soft mb-10">Last updated: {new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+
+      <div class="flex flex-col gap-8 text-slate-mid text-sm leading-relaxed">
+
+        <div>
+          <h2 class="text-lg font-bold text-slate mb-2">1. Educational purpose</h2>
+          <p>The content on PainFreeTendon is intended for educational and informational purposes only. It does not constitute medical advice and is not a substitute for assessment, diagnosis, or treatment by a qualified healthcare professional.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-slate mb-2">2. No clinical relationship</h2>
+          <p>Accessing this website does not create a clinician-patient relationship between you and Paul Cramer, RMT, unless you have booked and attended a formal consultation.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-slate mb-2">3. Use at your own risk</h2>
+          <p>Exercises and rehabilitation guidance described on this site are general in nature. Individual circumstances vary significantly. Always consult a qualified healthcare provider before starting any new rehabilitation program, particularly if you have a serious injury or medical condition.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-slate mb-2">4. Intellectual property</h2>
+          <p>All content on this site — including text, graphics, and course materials — is the property of PainFreeTendon and Paul Cramer, RMT, and may not be reproduced without written permission.</p>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-slate mb-2">5. Contact</h2>
+          <p>Questions about these terms? Email: <a href="mailto:paul@movementspark.com" class="text-blue hover:underline">paul@movementspark.com</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
