@@ -1,0 +1,162 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title:       string;
+  description: string;
+  category:    string;
+  readTime:    string;
+  date:        string;
+  draft?:      boolean;
+}
+
+const { title, description, category, readTime, date, draft = false } = Astro.props;
+
+const categoryColors: Record<string, string> = {
+  'Pain Science':  'bg-blue-light text-blue',
+  'Achilles':      'bg-blue-light text-blue',
+  'Loading':       'bg-teal-light text-teal',
+  'Tennis Elbow':  'bg-teal-light text-teal',
+  'Recovery':      'bg-orange-50 text-orange-600',
+  'Research':      'bg-violet-50 text-violet-600',
+};
+const catColor = categoryColors[category] ?? 'bg-bg-alt text-slate-mid';
+---
+
+<BaseLayout title={title} description={description}>
+
+  {draft && (
+    <div class="bg-orange-50 border-b border-orange-200 py-2 px-6 text-center text-xs font-semibold text-orange-600">
+      ⚠️ Draft — not yet published
+    </div>
+  )}
+
+  <!-- Article header -->
+  <section class="bg-gradient-to-br from-[#f8fbff] to-[#eef5ff] py-16 md:py-20">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="flex items-center gap-3 mb-5">
+        <a href="/resources" class="text-xs font-semibold text-slate-soft hover:text-blue transition-colors flex items-center gap-1">
+          ← Resources
+        </a>
+        <span class="text-slate-soft/40">·</span>
+        <span class={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${catColor}`}>
+          {category}
+        </span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold text-slate leading-tight tracking-tight mb-5">
+        {title}
+      </h1>
+      <p class="text-lg text-slate-mid leading-relaxed mb-6">{description}</p>
+      <div class="flex items-center gap-4 text-xs text-slate-soft">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full overflow-hidden bg-blue-light flex-shrink-0">
+            <img src="/paul-cramer.png" alt="Paul Cramer" class="w-full h-full object-cover object-top" />
+          </div>
+          <span class="font-semibold text-slate-mid">Paul Cramer, RMT</span>
+        </div>
+        <span>·</span>
+        <span>{date}</span>
+        <span>·</span>
+        <span>{readTime}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article body -->
+  <article class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="prose-article">
+        <slot />
+      </div>
+
+      <!-- Author bio -->
+      <div class="mt-16 pt-8 border-t border-gray-100 flex items-start gap-5">
+        <div class="w-14 h-14 rounded-full overflow-hidden bg-blue-light flex-shrink-0">
+          <img src="/paul-cramer.png" alt="Paul Cramer" class="w-full h-full object-cover object-top" />
+        </div>
+        <div>
+          <p class="font-bold text-slate mb-1">Paul Cramer, RMT</p>
+          <p class="text-sm text-slate-soft leading-relaxed">
+            Registered Massage Therapist with a clinical focus on tendon rehabilitation. Founder of PainFreeTendon — evidence-informed guidance for people with tendon pain.
+          </p>
+          <a href="/about" class="text-sm font-semibold text-blue hover:underline mt-2 inline-block">Read more about Paul →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Bottom CTA -->
+  <section class="py-16 bg-bg-teal border-t border-teal/10">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-extrabold text-slate mb-3">Ready to take the next step?</h2>
+      <p class="text-slate-mid text-sm mb-6">Browse structured rehab programs or book a 1-on-1 session with Paul to get a personalised plan.</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/programs" class="btn-primary text-sm">View Programs →</a>
+        <a href="/book" class="btn-outline text-sm">Book a Session</a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style is:global>
+  .prose-article {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3D4E6B;
+  }
+  .prose-article h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1A2540;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: -.02em;
+    line-height: 1.3;
+  }
+  .prose-article h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1A2540;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-article p {
+    margin-bottom: 1.25rem;
+  }
+  .prose-article ul, .prose-article ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .prose-article ul { list-style: disc; }
+  .prose-article ol { list-style: decimal; }
+  .prose-article li { line-height: 1.7; }
+  .prose-article strong { color: #1A2540; font-weight: 700; }
+  .prose-article a { color: #1D6FD8; text-decoration: underline; }
+  .prose-article blockquote {
+    border-left: 4px solid #0D9A8A;
+    padding: 1rem 1.25rem;
+    background: #F0FBF9;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #1A2540;
+  }
+  .prose-article .callout {
+    background: #EBF3FF;
+    border-left: 4px solid #1D6FD8;
+    padding: 1rem 1.25rem;
+    border-radius: 0 10px 10px 0;
+    margin: 1.5rem 0;
+    font-size: .93rem;
+  }
+  .prose-article .callout strong { color: #1558B0; }
+  .prose-article hr {
+    border: none;
+    border-top: 1px solid #E2E8F4;
+    margin: 2rem 0;
+  }
+</style>

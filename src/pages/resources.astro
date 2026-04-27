@@ -59,6 +59,34 @@ const articles = [
   },
 ].filter(a => !a.draft);
 
+// Published articles — add new ones here as they go live
+const publishedArticles = [
+  {
+    category: 'Achilles',
+    color:    'bg-blue-light text-blue',
+    title:    'Heel Raises for Achilles Tendinopathy: A Complete Guide',
+    excerpt:  'The research on progressive heel raises for Achilles tendinopathy is strong. Here\'s exactly how to do them, when to progress, and what to expect.',
+    time:     '8 min read',
+    href:     '/blog/heel-raises-achilles-tendinopathy-guide',
+  },
+  {
+    category: 'Pain Science',
+    color:    'bg-blue-light text-blue',
+    title:    'Why Tendon Pain Isn\'t About Damage',
+    excerpt:  'Most people with tendon pain assume something is structurally wrong. The research tells a different story — and understanding it changes everything.',
+    time:     '6 min read',
+    href:     '/blog/why-tendon-pain-isnt-about-damage',
+  },
+  {
+    category: 'Loading',
+    color:    'bg-teal-light text-teal',
+    title:    'The Isometric Exercise Explained',
+    excerpt:  'Isometrics are recommended for almost every tendon condition — but most people don\'t know why, or how to do them correctly. Here\'s the complete picture.',
+    time:     '5 min read',
+    href:     '/blog/isometric-exercise-explained',
+  },
+];
+
 const guides = [
   {
     icon:  '📄',
@@ -125,7 +153,7 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
       <span class="badge">Articles</span>
       <h2 class="section-title mb-10">Latest articles</h2>
 
-      {articles.length === 0 ? (
+      {publishedArticles.length === 0 ? (
         <div class="bg-bg-alt rounded-2xl border border-gray-100 p-12 text-center max-w-xl mx-auto">
           <div class="text-3xl mb-4">✍️</div>
           <h3 class="font-bold text-slate mb-2">First articles coming shortly</h3>
@@ -136,7 +164,7 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
         </div>
       ) : (
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {articles.map(a => (
+        {publishedArticles.map(a => (
           <article class="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden flex flex-col hover:shadow-card-md hover:-translate-y-1 transition-all duration-200">
             <div class="h-36 bg-gradient-to-br from-bg-alt to-blue-light flex items-center justify-center">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity=".3">
