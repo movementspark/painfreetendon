@@ -1,7 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#1D6FD8"/>
-  <path d="M16 5C16 5 9 10.5 9 17C9 21.1 12.1 24.5 16 24.5C19.9 24.5 23 21.1 23 17C23 10.5 16 5 16 5Z"
-        fill="none" stroke="white" stroke-width="1.8" stroke-linejoin="round"/>
-  <path d="M16 11.5V20" stroke="#0D9A8A" stroke-width="2.2" stroke-linecap="round"/>
-  <path d="M13 16.5H19" stroke="#0D9A8A" stroke-width="2.2" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Teal circle border -->
+  <circle cx="32" cy="32" r="30" fill="white" stroke="#0D9A8A" stroke-width="3.5"/>
+
+  <!-- Arc lines (fanning out like the logo swoosh) -->
+  <!-- Outermost arc - blue -->
+  <path d="M 18 46 Q 16 26 36 14" fill="none" stroke="#1D6FD8" stroke-width="2.8" stroke-linecap="round"/>
+  <!-- Middle arc - blue -->
+  <path d="M 21 46 Q 20 28 36 18" fill="none" stroke="#1D6FD8" stroke-width="2.8" stroke-linecap="round"/>
+  <!-- Inner arc - teal -->
+  <path d="M 24 46 Q 24 30 36 22" fill="none" stroke="#0D9A8A" stroke-width="2.8" stroke-linecap="round"/>
+
+  <!-- Teal dot at the top of the arc -->
+  <circle cx="36" cy="14" r="3.5" fill="#0D9A8A"/>
 </svg>
