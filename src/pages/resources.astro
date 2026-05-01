@@ -62,12 +62,13 @@ const articles = [
 // Published articles — add new ones here as they go live
 const publishedArticles = [
   {
-    category: 'Loading',
-    color:    'bg-teal-light text-teal',
-    title:    'Stop Resting Your Sore Tendons: The Surprising Truth About Why Your Recovery is Stalled',
-    excerpt:  'If rest keeps settling your tendon pain — only for it to come right back — here\'s why that cycle happens, and what to do instead.',
-    time:     '7 min read',
-    href:     '/blog/stop-resting-your-sore-tendons',
+    category:  'Loading',
+    color:     'bg-teal-light text-teal',
+    title:     'Stop Resting Your Sore Tendons: The Surprising Truth About Why Your Recovery is Stalled',
+    excerpt:   'If rest keeps settling your tendon pain — only for it to come right back — here\'s why that cycle happens, and what to do instead.',
+    time:      '7 min read',
+    href:      '/blog/stop-resting-your-sore-tendons',
+    thumbnail: '/stop-resting-featured.jpg',
   },
   {
     category: 'Achilles',
@@ -174,12 +175,18 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {publishedArticles.map(a => (
           <article class="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden flex flex-col hover:shadow-card-md hover:-translate-y-1 transition-all duration-200">
-            <div class="h-36 bg-gradient-to-br from-bg-alt to-blue-light flex items-center justify-center">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity=".3">
-                <rect x="8" y="8" width="32" height="32" rx="6" stroke="#1D6FD8" stroke-width="2"/>
-                <path d="M16 20H32M16 26H28M16 32H24" stroke="#1D6FD8" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
+            {a.thumbnail ? (
+              <div class="h-36 overflow-hidden">
+                <img src={a.thumbnail} alt={a.title} class="w-full h-full object-cover" />
+              </div>
+            ) : (
+              <div class="h-36 bg-gradient-to-br from-bg-alt to-blue-light flex items-center justify-center">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity=".3">
+                  <rect x="8" y="8" width="32" height="32" rx="6" stroke="#1D6FD8" stroke-width="2"/>
+                  <path d="M16 20H32M16 26H28M16 32H24" stroke="#1D6FD8" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            )}
 
             <div class="p-6 flex flex-col flex-1">
               <div class="flex items-center justify-between mb-3">
