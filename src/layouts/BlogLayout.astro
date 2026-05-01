@@ -2,15 +2,17 @@
 import BaseLayout from './BaseLayout.astro';
 
 interface Props {
-  title:       string;
-  description: string;
-  category:    string;
-  readTime:    string;
-  date:        string;
-  draft?:      boolean;
+  title:           string;
+  description:     string;
+  category:        string;
+  readTime:        string;
+  date:            string;
+  draft?:          boolean;
+  heroImage?:      string;
+  heroImageAlt?:   string;
 }
 
-const { title, description, category, readTime, date, draft = false } = Astro.props;
+const { title, description, category, readTime, date, draft = false, heroImage, heroImageAlt } = Astro.props;
 
 const categoryColors: Record<string, string> = {
   'Pain Science':  'bg-blue-light text-blue',
@@ -61,6 +63,20 @@ const catColor = categoryColors[category] ?? 'bg-bg-alt text-slate-mid';
       </div>
     </div>
   </section>
+
+  <!-- Featured image -->
+  {heroImage && (
+    <div class="w-full bg-white">
+      <div class="max-w-3xl mx-auto px-6 pt-10">
+        <img
+          src={heroImage}
+          alt={heroImageAlt ?? title}
+          class="w-full rounded-2xl shadow-card object-cover"
+          style="max-height: 420px;"
+        />
+      </div>
+    </div>
+  )}
 
   <!-- Article body -->
   <article class="py-16 bg-white">
