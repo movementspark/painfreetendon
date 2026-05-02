@@ -1,0 +1,39 @@
+# PainFreeTendon
+
+> Evidence-informed tendon rehabilitation guidance for people with persistent tendon pain.
+
+PainFreeTendon is run by Paul Cramer, RMT — a Registered Massage Therapist with a clinical focus on tendon rehabilitation. The site sits between overly technical clinical resources and oversimplified advice, offering clear, evidence-based guidance grounded in the biopsychosocial model of pain and load-capacity principles.
+
+## What this site covers
+
+- Achilles tendinopathy
+- Patellar tendinopathy
+- Hamstring tendinopathy
+- Tennis elbow (lateral epicondylalgia)
+- Golfer's elbow (medial epicondylalgia)
+- Rotator cuff tendinopathy
+- Progressive loading and tendon rehabilitation principles
+- Pain science education for patients and clinicians
+
+## Core philosophy
+
+- Tendon pain is a load-tolerance problem, not a structural damage problem
+- Rest reduces pain short-term but reduces tendon capacity — graduated loading is the answer
+- Pain is information, not damage
+- Recovery requires building capacity, not just avoiding pain
+- The biopsychosocial model: sleep, stress, and beliefs about pain all affect recovery
+
+## Content
+
+- /resources — articles and guides on tendon pain and rehab
+- /blog/heel-raises-achilles-tendinopathy-guide — comprehensive guide to progressive heel raises
+- /blog/why-tendon-pain-isnt-about-damage — pain science education
+- /blog/isometric-exercise-explained — how and why isometrics work
+- /blog/stop-resting-your-sore-tendons — why rest stalls recovery and what to do instead
+- /programs — structured rehab courses
+- /book — 1-on-1 virtual sessions with Paul Cramer, RMT
+- /about — Paul's background and clinical philosophy
+
+## Author
+
+Paul Cramer, RMT — Registered Massage Therapist, tendon rehabilitation specialist, founder of PainFreeTendon.

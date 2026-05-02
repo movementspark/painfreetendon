@@ -14,6 +14,9 @@ const {
   description = 'Evidence-informed tendon rehab guidance from Paul Cramer, RMT. Understand your tendon pain and build lasting capacity.',
   ogImage = '/og-default.png',
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://painfreetendon.com').href;
+const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://painfreetendon.com${ogImage}`;
 ---
 
 <!doctype html>
@@ -22,13 +25,17 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImageAbsolute} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | PainFreeTendon</title>
+    <slot name="head" />
   </head>
   <body class="antialiased">
     <Nav />
