@@ -1,11 +1,16 @@
-import crypto from 'node:crypto';
+import { createHash } from 'crypto';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { email } = req.body;
+  // Handle body whether Vercel auto-parsed it or not
+  let parsed = req.body;
+  if (typeof parsed === 'string') {
+    try { parsed = JSON.parse(parsed); } catch { parsed = {}; }
+  }
+  const email = parsed?.email;
 
   if (!email || typeof email !== 'string' || !email.includes('@')) {
     return res.status(400).json({ error: 'Valid email required' });
@@ -21,7 +26,7 @@ export default async function handler(req, res) {
 
   const SERVER = API_KEY.split('-')[1]; // e.g. 'us4'
   const auth = Buffer.from(`anystring:${API_KEY}`).toString('base64');
-  const hash = crypto.createHash('md5').update(email.toLowerCase()).digest('hex');
+  const hash = createHash('md5').update(email.toLowerCase()).digest('hex');
   const baseUrl = `https://${SERVER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}`;
   const headers = {
     Authorization: `Basic ${auth}`,
