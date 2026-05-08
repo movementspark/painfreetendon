@@ -13,114 +13,171 @@ import CTABanner  from '../components/CTABanner.astro';
     <div class="max-w-6xl mx-auto px-6 text-center max-w-3xl mx-auto">
       <span class="text-xs font-bold uppercase tracking-widest text-teal block mb-5">Programs</span>
       <h1 class="text-4xl md:text-5xl font-extrabold text-slate leading-tight tracking-tight mb-5">
-        Structured rehab programs that actually work
+        Structured rehab that actually works
       </h1>
       <p class="text-lg text-slate-mid leading-relaxed mb-8 max-w-2xl mx-auto">
-        Each program is built around progressive loading principles — the same evidence-based approach used in clinical practice, made accessible for anyone dealing with tendon pain.
+        Each program is built around progressive loading — the same evidence-based approach used in clinical practice, made accessible for anyone dealing with tendon pain.
       </p>
     </div>
   </section>
 
-  <!-- COMING SOON CARDS -->
+  <!-- FEATURED PROGRAM — Achilles -->
   <section class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid md:grid-cols-3 gap-6">
 
+      <!-- LIVE badge + heading -->
+      <div class="max-w-4xl mx-auto mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="inline-flex items-center gap-1.5 bg-teal/10 text-teal text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-teal inline-block animate-pulse"></span>
+            Now available
+          </span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate leading-tight mb-4">
+          Achilles Tendinopathy:<br/>The 12-Week Return to Full Activity
+        </h2>
+        <p class="text-lg text-slate-mid leading-relaxed max-w-2xl">
+          A complete, clinician-designed rehabilitation program — from isometrics through heavy slow resistance — all the way back to running and sport.
+        </p>
+      </div>
+
+      <!-- Two-column layout: details + CTA card -->
+      <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 items-start">
+
+        <!-- Left: what's inside -->
+        <div class="md:col-span-2 space-y-8">
+
+          <div>
+            <h3 class="text-base font-extrabold text-slate uppercase tracking-wide mb-4">What's inside</h3>
+            <ul class="space-y-3">
+              {[
+                ['Module 0',  'Welcome — how the program works and what to expect'],
+                ['Module 1',  'Understanding Your Achilles — pain science, load tolerance, why rest doesn\'t work'],
+                ['Module 2',  'The Pain Monitoring System — your decision-making framework for 12 weeks'],
+                ['Module 3',  'Phase 1: Isometrics — fast pain relief and tendon activation (Weeks 1–2)'],
+                ['Module 4',  'Phase 2: Bilateral Heel Raises — adding movement with controlled load (Weeks 2–4)'],
+                ['Module 5',  'Phase 3: Single-Leg Loading — the central phase of Achilles rehab (Weeks 4–8)'],
+                ['Module 6',  'Phase 4: Heavy Slow Resistance — building genuine tendon strength (Weeks 6–12)'],
+                ['Module 7',  'Return to Activity — readiness criteria and progressive run-walk program'],
+                ['Module 8',  'Managing Setbacks — a clear step-back protocol for when pain spikes'],
+                ['Module 9',  'Long-Term Tendon Health — maintenance loading and preventing recurrence'],
+              ].map(([tag, desc]) => (
+                <li class="flex gap-3 items-start">
+                  <span class="text-xs font-bold text-blue bg-blue/8 rounded px-2 py-0.5 mt-0.5 shrink-0 whitespace-nowrap">{tag}</span>
+                  <span class="text-sm text-slate-mid leading-relaxed">{desc}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-base font-extrabold text-slate uppercase tracking-wide mb-4">Included downloads</h3>
+            <ul class="space-y-2">
+              {[
+                'Phase 1 Exercise Card — isometric protocol with pain monitoring guide',
+                'Phase 2 Exercise Card — bilateral heel raise progression and technique cues',
+                'Phase 3 Exercise Card — single-leg loading levels and progression criteria',
+                'Phase 4 Exercise Card — heavy slow resistance protocol with load tracking log',
+                'Return to Activity Checklist — readiness criteria and 6-week run-walk program',
+              ].map(item => (
+                <li class="flex gap-2.5 items-start text-sm text-slate-mid leading-relaxed">
+                  <svg class="w-4 h-4 text-teal shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="bg-[#F5F8FF] rounded-2xl p-6 border border-blue/10">
+            <p class="text-sm text-slate leading-relaxed italic">
+              "I built this program because most people with Achilles tendinopathy never get access to a structured, properly progressed loading plan. They get told to rest, or given a vague calf raise protocol with no guidance on how to progress. This is the program I wish they all had from day one."
+            </p>
+            <p class="text-xs font-bold text-blue mt-3">— Paul Cramer, RMT</p>
+          </div>
+
+        </div>
+
+        <!-- Right: CTA card -->
+        <div class="md:col-span-1">
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-card p-7 sticky top-24">
+            <div class="w-14 h-14 rounded-2xl bg-blue/10 flex items-center justify-center text-2xl mb-5">🦶</div>
+            <h3 class="text-lg font-extrabold text-slate mb-1">Achilles Program</h3>
+            <p class="text-xs text-teal font-bold uppercase tracking-widest mb-4">12-week program</p>
+            <ul class="space-y-2 mb-6">
+              {[
+                '10 video modules',
+                'Written lessons for every phase',
+                '5 downloadable exercise cards',
+                'Pain monitoring framework',
+                'Return-to-running program',
+                'Lifetime access',
+              ].map(f => (
+                <li class="flex gap-2 items-center text-sm text-slate-mid">
+                  <svg class="w-4 h-4 text-teal shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="https://mastera.io"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary w-full text-center block mb-3"
+            >
+              Start the Program →
+            </a>
+            <p class="text-xs text-slate-soft text-center">Instant access. Work at your own pace.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div class="max-w-6xl mx-auto px-6">
+    <hr class="border-gray-100" />
+  </div>
+
+  <!-- COMING SOON CARDS -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-sm text-slate-soft font-semibold uppercase tracking-widest mb-8">More programs coming soon</p>
+      <div class="grid md:grid-cols-3 gap-6">
         {[
-          { icon: '🦶', title: 'Achilles Tendinopathy Program',    body: 'A 12-week progressive loading program for Achilles tendon recovery — from isometrics to full return to activity.', tag: 'Launching soon' },
-          { icon: '🦵', title: 'Patellar Tendon Program',          body: 'Structured rehab for jumper\'s knee using decline squats, heavy slow resistance, and sport-specific loading stages.', tag: 'Launching soon' },
-          { icon: '🎾', title: 'Tennis Elbow Program',             body: 'A step-by-step program for lateral epicondylitis — from pain relief to full grip strength and return to sport.', tag: 'Launching soon' },
+          { icon: '🦵', title: 'Patellar Tendon Program',  body: 'Structured rehab for jumper\'s knee using decline squats, heavy slow resistance, and sport-specific loading.' },
+          { icon: '🎾', title: 'Tennis Elbow Program',     body: 'A step-by-step program for lateral epicondylitis — from pain relief to full grip strength and return to sport.' },
+          { icon: '💪', title: 'Golfer\'s Elbow Program',  body: 'Progressive loading for medial epicondylalgia, with modifications for golfers, climbers, and overhead athletes.' },
         ].map(p => (
-          <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-card flex flex-col">
-            <div class="w-14 h-14 rounded-2xl bg-blue-light flex items-center justify-center text-2xl mb-5">
+          <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-card flex flex-col opacity-75">
+            <div class="w-12 h-12 rounded-xl bg-blue-light flex items-center justify-center text-xl mb-4">
               {p.icon}
             </div>
-            <span class="text-xs font-bold uppercase tracking-widest text-teal mb-3 block">{p.tag}</span>
-            <h3 class="text-lg font-extrabold text-slate mb-3">{p.title}</h3>
-            <p class="text-sm text-slate-soft leading-relaxed flex-1 mb-6">{p.body}</p>
-            <div class="bg-blue-light rounded-xl px-4 py-3 text-sm text-blue font-semibold text-center">
-              Notify me when available →
-            </div>
+            <span class="text-xs font-bold uppercase tracking-widest text-slate-soft mb-3 block">Coming soon</span>
+            <h3 class="text-base font-extrabold text-slate mb-3">{p.title}</h3>
+            <p class="text-sm text-slate-soft leading-relaxed flex-1">{p.body}</p>
           </div>
         ))}
-
       </div>
+    </div>
+  </section>
 
-      <!-- Email capture -->
-      <div class="mt-14 bg-teal-light rounded-2xl p-10 border border-teal/15 text-center max-w-2xl mx-auto">
-        <h2 class="text-2xl font-extrabold text-slate mb-3">Be first to know when programs launch</h2>
-        <p class="text-slate-mid text-sm mb-6">Drop your email below and I'll send you a note the moment the first program is available — plus early access pricing.</p>
-        <form id="notify-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input
-            id="notify-email"
-            type="email"
-            placeholder="Your email address"
-            required
-            class="flex-1 px-4 py-3 rounded-lg border border-teal/20 text-sm text-slate bg-white focus:outline-none focus:ring-2 focus:ring-teal/30"
-          />
-          <button id="notify-btn" type="submit" class="btn-primary whitespace-nowrap text-sm">
-            Notify me →
-          </button>
-        </form>
-        <p id="notify-status" class="text-xs mt-3 hidden"></p>
-        <p id="notify-disclaimer" class="text-xs text-slate-soft mt-3">No spam. Unsubscribe any time.</p>
-      </div>
-
-      <script>
-        const form = document.getElementById('notify-form');
-        const emailInput = document.getElementById('notify-email');
-        const btn = document.getElementById('notify-btn');
-        const status = document.getElementById('notify-status');
-        const disclaimer = document.getElementById('notify-disclaimer');
-
-        form.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          btn.textContent = 'Sending…';
-          btn.disabled = true;
-
-          try {
-            const res = await fetch('/api/subscribe', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ email: emailInput.value }),
-            });
-            const data = await res.json();
-
-            if (res.ok) {
-              form.classList.add('hidden');
-              disclaimer.classList.add('hidden');
-              status.textContent = "You're on the list! I'll send you a note the moment the first program is ready.";
-              status.className = 'text-sm text-teal font-semibold mt-3';
-            } else {
-              status.textContent = data.error || 'Something went wrong. Please try again.';
-              status.className = 'text-xs text-red-500 mt-3';
-              status.classList.remove('hidden');
-              btn.textContent = 'Notify me →';
-              btn.disabled = false;
-            }
-          } catch {
-            status.textContent = 'Something went wrong. Please try again.';
-            status.className = 'text-xs text-red-500 mt-3';
-            status.classList.remove('hidden');
-            btn.textContent = 'Notify me →';
-            btn.disabled = false;
-          }
-        });
-      </script>
-
-      <!-- Mastera link -->
-      <div class="mt-10 text-center">
-        <p class="text-sm text-slate-soft mb-3">Already enrolled? Access your program here:</p>
-        <a
-          href="https://mastera.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-outline text-sm"
-        >
-          Go to Mastera →
-        </a>
-      </div>
-
+  <!-- Already enrolled -->
+  <section class="py-8 bg-white">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-sm text-slate-soft mb-3">Already enrolled? Access your program here:</p>
+      <a
+        href="https://mastera.io"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline text-sm"
+      >
+        Go to Mastera →
+      </a>
     </div>
   </section>
 
