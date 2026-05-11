@@ -186,19 +186,25 @@ const guides = [
     icon:  '📄',
     title: 'Achilles Load Guide',
     desc:  'A one-page reference for managing Achilles load during your rehab program.',
-    tag:   'Coming soon',
+    href:  '/guides/achilles-load-guide.pdf',
+  },
+  {
+    icon:  '📄',
+    title: 'Achilles Tendon Starter Guide',
+    desc:  'Everything you need to get started with Achilles tendon rehab — in one place.',
+    href:  '/guides/achilles-tendon-starter-guide.pdf',
   },
   {
     icon:  '📄',
     title: 'Tennis Elbow Starter Guide',
     desc:  'First steps for lateral epicondylitis — what to do in week one.',
-    tag:   'Coming soon',
+    href:  '/guides/tennis-elbow-starter-guide.pdf',
   },
   {
     icon:  '📄',
     title: 'Pain Monitoring Guide',
     desc:  'How to use the numeric rating scale intelligently during loading.',
-    tag:   'Coming soon',
+    href:  '/guides/pain-monitoring-guide.pdf',
   },
 ];
 
@@ -313,9 +319,16 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
               <h3 class="font-bold text-slate mb-1.5">{g.title}</h3>
               <p class="text-sm text-slate-soft leading-relaxed">{g.desc}</p>
             </div>
-            <span class="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-bg-alt text-slate-soft self-start">
-              {g.tag}
-            </span>
+            <a
+              href={g.href}
+              download
+              class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-teal text-white hover:bg-teal/90 transition-colors self-start"
+            >
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                <path d="M6.5 1v7M3.5 5.5l3 3 3-3M2 11h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Download PDF
+            </a>
           </div>
         ))}
       </div>
