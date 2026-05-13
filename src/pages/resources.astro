@@ -338,19 +338,59 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
         <div class="max-w-lg">
           <h3 class="text-xl font-bold text-slate mb-2">Get guides when they launch</h3>
           <p class="text-sm text-slate-mid mb-5">Sign up to receive new guides and articles directly in your inbox — no fluff, just clear tendon rehab education.</p>
-          <form class="flex flex-col sm:flex-row gap-3">
+          <form id="subscribe-form" class="flex flex-col sm:flex-row gap-3">
             <input
+              id="subscribe-email"
               type="email"
               placeholder="Your email address"
+              required
               class="flex-1 px-4 py-3 rounded-lg border border-blue/20 text-sm text-slate bg-white focus:outline-none focus:ring-2 focus:ring-blue/30"
             />
-            <button type="submit" class="btn-primary text-sm whitespace-nowrap">
+            <button id="subscribe-btn" type="submit" class="btn-primary text-sm whitespace-nowrap">
               Subscribe →
             </button>
           </form>
-          <p class="text-xs text-slate-soft mt-3">No spam. Unsubscribe any time.</p>
+          <p id="subscribe-msg" class="text-xs mt-3 text-slate-soft">No spam. Unsubscribe any time.</p>
         </div>
       </div>
+
+      <script>
+        const form = document.getElementById('subscribe-form');
+        const emailInput = document.getElementById('subscribe-email');
+        const btn = document.getElementById('subscribe-btn');
+        const msg = document.getElementById('subscribe-msg');
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          btn.disabled = true;
+          btn.textContent = 'Subscribing…';
+          msg.textContent = '';
+          msg.className = 'text-xs mt-3 text-slate-soft';
+
+          try {
+            const res = await fetch('/api/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: emailInput.value }),
+            });
+            const data = await res.json();
+
+            if (res.ok) {
+              form.innerHTML = '<p class="text-sm font-medium text-teal">✓ You\'re in! Check your inbox for a confirmation.</p>';
+            } else {
+              msg.textContent = data.error || 'Something went wrong. Please try again.';
+              msg.className = 'text-xs mt-3 text-red-500';
+              btn.disabled = false;
+              btn.textContent = 'Subscribe →';
+            }
+          } catch {
+            msg.textContent = 'Network error. Please try again.';
+            msg.className = 'text-xs mt-3 text-red-500';
+            btn.disabled = false;
+            btn.textContent = 'Subscribe →';
+          }
+        });
+      </script>
     </div>
   </section>
 
