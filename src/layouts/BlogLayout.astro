@@ -15,12 +15,14 @@ interface Props {
 const { title, description, category, readTime, date, draft = false, heroImage, heroImageAlt } = Astro.props;
 
 const ogImage = heroImage ?? '/og-default.png';
+const canonicalURL = new URL(Astro.url.pathname, 'https://painfreetendon.com').href;
 
 const jsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": title,
   "description": description,
+  "datePublished": date,
   "author": {
     "@type": "Person",
     "name": "Paul Cramer, RMT",
@@ -34,7 +36,7 @@ const jsonLd = JSON.stringify({
   "image": heroImage ? `https://painfreetendon.com${heroImage}` : "https://painfreetendon.com/og-default.png",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://painfreetendon.com`
+    "@id": canonicalURL
   }
 });
 
@@ -49,7 +51,7 @@ const categoryColors: Record<string, string> = {
 const catColor = categoryColors[category] ?? 'bg-bg-alt text-slate-mid';
 ---
 
-<BaseLayout title={title} description={description} ogImage={ogImage}>
+<BaseLayout title={title} description={description} ogImage={ogImage} ogType="article">
   <script type="application/ld+json" set:html={jsonLd} slot="head" />
 
   {draft && (

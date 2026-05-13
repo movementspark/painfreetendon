@@ -1,18 +1,21 @@
 ---
 import Nav from '@components/Nav.astro';
 import Footer from '@components/Footer.astro';
+import { Analytics } from '@vercel/analytics/astro';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogType?: string;
 }
 
 const {
   title,
   description = 'Evidence-informed tendon rehab guidance from Paul Cramer, RMT. Understand your tendon pain and build lasting capacity.',
   ogImage = '/og-default.png',
+  ogType = 'website',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://painfreetendon.com').href;
@@ -30,7 +33,7 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://painfree
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageAbsolute} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImageAbsolute} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -43,5 +46,6 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://painfree
       <slot />
     </main>
     <Footer />
+    <Analytics />
   </body>
 </html>
