@@ -2,6 +2,16 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import CTABanner  from '@components/CTABanner.astro';
 
+// Auto-detect heroImage from every blog post file at build time
+const blogSources = import.meta.glob('./blog/*.astro', { query: '?raw', import: 'default' });
+const heroImages: Record<string, string> = {};
+for (const [path, loader] of Object.entries(blogSources)) {
+  const content = await (loader as () => Promise<string>)();
+  const slug = path.replace('./blog/', '').replace('.astro', '');
+  const match = (content as string).match(/heroImage="([^"]+)"/);
+  if (match) heroImages[`/blog/${slug}`] = match[1];
+}
+
 const articles = [
   {
     category: 'Recovery',
@@ -386,9 +396,9 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {publishedArticles.map(a => (
           <article class="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden flex flex-col hover:shadow-card-md hover:-translate-y-1 transition-all duration-200">
-            {a.thumbnail ? (
+            {(a.thumbnail ?? heroImages[a.href]) ? (
               <div class="h-36 overflow-hidden">
-                <img src={a.thumbnail} alt={a.title} class="w-full h-full object-cover" />
+                <img src={a.thumbnail ?? heroImages[a.href]} alt={a.title} class="w-full h-full object-cover" />
               </div>
             ) : (
               <div class="h-36 bg-gradient-to-br from-bg-alt to-blue-light flex items-center justify-center">
