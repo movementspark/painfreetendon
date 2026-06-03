@@ -6,9 +6,9 @@ const pillars = [
     body:  'Every recommendation on this site reflects the latest tendinopathy science — load-based rehab, pain science education, and progressive capacity building.',
   },
   {
-    icon: '🎓',
-    title: 'Paul Cramer, RMT',
-    body:  'A Registered Massage Therapist with deep clinical focus on tendon rehabilitation, translating complex research into practical, accessible guidance.',
+    icon: '🎯',
+    title: 'Specialized, not general',
+    body:  'This site does one thing: tendon pain. Not general fitness, not broad rehab advice. Deep focus on the condition most clinicians undertreat.',
   },
   {
     icon: '✅',
@@ -20,16 +20,50 @@ const pillars = [
 
 <section class="bg-gradient-to-br from-slate via-[#1A3060] to-slate py-20">
   <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-14">
-      <span class="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4 bg-white/10 text-white/75">
-        Why Trust This
-      </span>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight tracking-tight mb-3">
-        Evidence-informed.<br/>Clinically grounded.
-      </h2>
-      <p class="text-white/60 text-base max-w-lg mx-auto leading-relaxed">
-        PainFreeTendon bridges the gap between clinical research and the guidance real people actually need.
-      </p>
+
+    <!-- Who is Paul -->
+    <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16 mb-16">
+
+      <!-- Photo -->
+      <div class="flex-shrink-0">
+        <div class="w-44 h-44 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white/20 shadow-xl">
+          <img
+            src="/paul-cramer.png"
+            alt="Paul Cramer, RMT — founder of PainFreeTendon"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
+      </div>
+
+      <!-- Story -->
+      <div class="text-center md:text-left max-w-2xl">
+        <span class="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4 bg-white/10 text-white/75">
+          Why I built this
+        </span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight tracking-tight mb-4">
+          Hi, I'm Paul — an RMT who got frustrated with how tendon pain is treated.
+        </h2>
+        <p class="text-white/65 text-base leading-relaxed mb-4">
+          I've dealt with tendon pain myself, and I've spent years watching patients go through the same exhausting cycle: rest, cortisone, feel better, re-injure, repeat. The frustrating part is that the research on how to actually fix tendons has been clear for over a decade. Most treatment just hasn't caught up.
+        </p>
+        <p class="text-white/65 text-base leading-relaxed mb-6">
+          I built PainFreeTendon to close that gap — to give people access to evidence-based guidance that's honest about timelines, practical about what to do, and grounded in how tendons actually work.
+        </p>
+        <a href="/about" class="inline-flex items-center gap-2 text-sm font-semibold text-teal hover:text-white transition-colors duration-150">
+          More about me
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-white/10 mb-14"></div>
+
+    <!-- Credibility pillars -->
+    <div class="text-center mb-10">
+      <h3 class="text-sm font-bold text-white/80 uppercase tracking-widest">What makes this different</h3>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -43,5 +77,6 @@ const pillars = [
         </div>
       ))}
     </div>
+
   </div>
 </section>
