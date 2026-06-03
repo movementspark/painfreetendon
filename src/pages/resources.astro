@@ -453,12 +453,14 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex gap-2 overflow-x-auto scrollbar-hide">
         {topics.map((t, i) => (
-          <button class:list={[
-            'flex-shrink-0 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full transition-colors duration-150',
-            i === 0
-              ? 'bg-blue text-white'
-              : 'bg-bg-alt text-slate-mid hover:bg-blue-light hover:text-blue',
-          ]}>
+          <button
+            data-filter={t}
+            class:list={[
+              'flex-shrink-0 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full transition-colors duration-150',
+              i === 0
+                ? 'bg-blue text-white'
+                : 'bg-bg-alt text-slate-mid hover:bg-blue-light hover:text-blue',
+            ]}>
             {t}
           </button>
         ))}
@@ -483,8 +485,8 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
         </div>
       ) : (
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {publishedArticles.map(a => (
-          <article class="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden flex flex-col hover:shadow-card-md hover:-translate-y-1 transition-all duration-200">
+        {[...publishedArticles].reverse().map(a => (
+          <article data-category={a.category} class="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden flex flex-col hover:shadow-card-md hover:-translate-y-1 transition-all duration-200">
             {(a.thumbnail ?? heroImages[a.href]) ? (
               <div class="h-36 overflow-hidden">
                 <img src={a.thumbnail ?? heroImages[a.href]} alt={a.title} class="w-full h-full object-cover" />
@@ -637,16 +639,24 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
     </div>
   </section>
 
-  <CTABanner
-    badge="Ready for a program?"
-    title="Turn this education into action"
-    body="Browse structured rehab programs built around the same principles as everything you've read here."
-    primaryCta={{ label: 'View Programs →', href: '/programs' }}
-    secondaryCta={{ label: 'Work with Paul', href: '/book' }}
-    variant="dark"
-  />
-
-</BaseLayout>
+  <script>
+    const buttons = document.querySelectorAll('[data-filter]');
+    const cards   = document.querySelectorAll('[data-category]');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        buttons.forEach(b => {
+          b.classList.remove('bg-blue', 'text-white');
+          b.classList.add('bg-bg-alt', 'text-slate-mid');
+        });
+        btn.classList.add('bg-blue', 'text-white');
+        btn.classList.remove('bg-bg-alt', 'text-slate-mid');
+        cards.forEach(card => {
+          card.style.display = (filter === 'All' || card.dataset.category === filter) ? '' : 'none';
+        });
+      });
+    });
+  </script>
 
   <CTABanner
     badge="Ready for a program?"
