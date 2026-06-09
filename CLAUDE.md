@@ -11,7 +11,7 @@ This file gives Claude full context on the PainFreeTendon project. Read this bef
 - Email: paul@movementspark.com
 - GitHub: movementspark
 - Domain: painfreetendon.com
-- Course platform: Mastera.io (may move to Thinkific or Kajabi)
+- Course platform: Systeme.io
 - YouTube: planned, not yet active
 
 ---
@@ -22,7 +22,7 @@ An education-first platform and rehab guidance hub for people with tendon pain. 
 
 **Three pathways for visitors:**
 1. **Learn** — free articles, guides, resources
-2. **Program** — structured rehab courses on Mastera.io
+2. **Program** — structured rehab courses on Systeme.io
 3. **1-on-1** — virtual sessions with Paul (telehealth, in development)
 
 **Core philosophy:**
@@ -70,7 +70,7 @@ painfreetendon.com/
 ├── /lower-body          Achilles, patellar, hamstring
 ├── /upper-body          Tennis elbow, golfer's elbow, rotator cuff
 ├── /resources           Articles, guides, email signup
-├── /programs            Course listings (Mastera.io)
+├── /programs            Course listings (Systeme.io)
 ├── /book                Session request form
 ├── /about               Paul's background and philosophy
 ├── /contact             Contact form
@@ -141,7 +141,7 @@ push.bat   # double-click in the painfreethendon folder
 
 1. Rank for Achilles tendinopathy search terms
 2. Build email list via Resources page
-3. Launch first Mastera course (Achilles 12-week program)
+3. Launch first Systeme.io course (Achilles 12-week program)
 4. Build clinician-focused course (tendinopathy for RMTs/physios) — higher price point
 5. Launch virtual telehealth consultations
 6. Start YouTube / short-form video (scripts written by Claude, filmed by Paul)
@@ -162,7 +162,7 @@ push.bat   # double-click in the painfreethendon folder
 - [ ] Add real booking link to /book page (Calendly or similar)
 - [ ] Replace hero.jpg with better image when available
 - [ ] Add Paul's full bio and real photo to /about
-- [ ] Build first Mastera course and link /programs to it
+- [ ] Build first Systeme.io course and link /programs to it
 - [ ] Set up Vercel Analytics
 - [ ] Start YouTube channel and link from site
 - [ ] Write articles for patellar, hamstring, tennis elbow, golfer's elbow
