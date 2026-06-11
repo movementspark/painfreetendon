@@ -512,78 +512,28 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
     </div>
   </section>
 
-  <!-- FILTER TAGS -->
+  <!-- ANCHOR NAV -->
   <section class="sticky top-20 z-40 bg-white border-b border-gray-100 py-4">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex gap-2 overflow-x-auto scrollbar-hide">
-        {topics.map((t, i) => (
+        <a href="#guides" class="flex-shrink-0 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-bg-alt text-slate-mid hover:bg-teal-light hover:text-teal transition-colors duration-150">
+          Free Guides
+        </a>
+        <a href="#articles" class="flex-shrink-0 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-bg-alt text-slate-mid hover:bg-blue-light hover:text-blue transition-colors duration-150">
+          Articles
+        </a>
+        <a href="#videos" class="flex-shrink-0 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-bg-alt text-slate-mid hover:bg-blue-light hover:text-blue transition-colors duration-150">
+          Videos
+        </a>
+        <div class="w-px bg-gray-100 mx-2 self-stretch"></div>
+        {topics.filter(t => t !== 'All').map(t => (
           <button
             data-filter={t}
-            class:list={[
-              'flex-shrink-0 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full transition-colors duration-150',
-              i === 0
-                ? 'bg-blue text-white'
-                : 'bg-bg-alt text-slate-mid hover:bg-blue-light hover:text-blue',
-            ]}>
+            class="flex-shrink-0 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full bg-bg-alt text-slate-mid hover:bg-blue-light hover:text-blue transition-colors duration-150">
             {t}
           </button>
         ))}
       </div>
-    </div>
-  </section>
-
-  <!-- ARTICLES -->
-  <section class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <span class="badge">Articles</span>
-      <h2 class="section-title mb-10">Latest articles</h2>
-
-      {publishedArticles.length === 0 ? (
-        <div class="bg-bg-alt rounded-2xl border border-gray-100 p-12 text-center max-w-xl mx-auto">
-          <div class="text-3xl mb-4">✍️</div>
-          <h3 class="font-bold text-slate mb-2">First articles coming shortly</h3>
-          <p class="text-sm text-slate-soft leading-relaxed mb-6">
-            Evidence-informed articles on Achilles tendinopathy, progressive loading, pain science and more are being prepared. Sign up below to get them in your inbox as they publish.
-          </p>
-          <a href="#subscribe" class="btn-primary text-sm">Notify me →</a>
-        </div>
-      ) : (
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[...publishedArticles].reverse().map(a => (
-          <article data-category={a.category} class="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden flex flex-col hover:shadow-card-md hover:-translate-y-1 transition-all duration-200">
-            {(a.thumbnail ?? heroImages[a.href]) ? (
-              <div class="h-36 overflow-hidden">
-                <img src={a.thumbnail ?? heroImages[a.href]} alt={a.title} class="w-full h-full object-cover" />
-              </div>
-            ) : (
-              <div class="h-36 bg-gradient-to-br from-bg-alt to-blue-light flex items-center justify-center">
-                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity=".3">
-                  <rect x="8" y="8" width="32" height="32" rx="6" stroke="#1D6FD8" stroke-width="2"/>
-                  <path d="M16 20H32M16 26H28M16 32H24" stroke="#1D6FD8" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-            )}
-
-            <div class="p-6 flex flex-col flex-1">
-              <div class="flex items-center justify-between mb-3">
-                <span class={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${a.color}`}>
-                  {a.category}
-                </span>
-                <span class="text-xs text-slate-soft">{a.time}</span>
-              </div>
-              <h3 class="font-bold text-slate mb-2 leading-snug">{a.title}</h3>
-              <p class="text-sm text-slate-soft leading-relaxed flex-1 mb-5">{a.excerpt}</p>
-              <a href={a.href} class="btn-ghost text-sm text-blue">
-                Read article
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
-      )}
     </div>
   </section>
 
@@ -634,6 +584,83 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
     </div>
   </section>
 
+  <!-- ARTICLES -->
+  <section id="articles" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge">Articles</span>
+      <h2 class="section-title mb-10">Latest articles</h2>
+
+      {publishedArticles.length === 0 ? (
+        <div class="bg-bg-alt rounded-2xl border border-gray-100 p-12 text-center max-w-xl mx-auto">
+          <div class="text-3xl mb-4">✍️</div>
+          <h3 class="font-bold text-slate mb-2">First articles coming shortly</h3>
+          <p class="text-sm text-slate-soft leading-relaxed mb-6">
+            Evidence-informed articles on Achilles tendinopathy, progressive loading, pain science and more are being prepared. Sign up below to get them in your inbox as they publish.
+          </p>
+          <a href="#subscribe" class="btn-primary text-sm">Notify me →</a>
+        </div>
+      ) : (
+      <div id="article-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[...publishedArticles].reverse().map((a, i) => (
+          <article
+            data-category={a.category}
+            data-index={i}
+            class:list={[
+              "bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden flex flex-col hover:shadow-card-md hover:-translate-y-1 transition-all duration-200",
+              i >= 9 ? "article-hidden" : ""
+            ]}
+            style={i >= 9 ? "display:none" : ""}
+          >
+            {(a.thumbnail ?? heroImages[a.href]) ? (
+              <div class="h-36 overflow-hidden">
+                <img src={a.thumbnail ?? heroImages[a.href]} alt={a.title} class="w-full h-full object-cover" />
+              </div>
+            ) : (
+              <div class="h-36 bg-gradient-to-br from-bg-alt to-blue-light flex items-center justify-center">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity=".3">
+                  <rect x="8" y="8" width="32" height="32" rx="6" stroke="#1D6FD8" stroke-width="2"/>
+                  <path d="M16 20H32M16 26H28M16 32H24" stroke="#1D6FD8" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            )}
+
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex items-center justify-between mb-3">
+                <span class={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ${a.color}`}>
+                  {a.category}
+                </span>
+                <span class="text-xs text-slate-soft">{a.time}</span>
+              </div>
+              <h3 class="font-bold text-slate mb-2 leading-snug">{a.title}</h3>
+              <p class="text-sm text-slate-soft leading-relaxed flex-1 mb-5">{a.excerpt}</p>
+              <a href={a.href} class="btn-ghost text-sm text-blue">
+                Read article
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+      )}
+
+      {publishedArticles.length > 9 && (
+        <div id="load-more-wrap" class="mt-10 text-center">
+          <button
+            id="load-more-btn"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-blue text-blue font-bold text-sm hover:bg-blue hover:text-white transition-colors duration-200"
+          >
+            Load more articles
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 2v10M2 9l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      )}
+    </div>
+  </section>
+
   <!-- VIDEO (placeholder) -->
   <section id="videos" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6">
@@ -659,22 +686,52 @@ const topics = ['All', 'Pain Science', 'Loading', 'Achilles', 'Tennis Elbow', 'R
   </section>
 
   <script>
-    const buttons = document.querySelectorAll('[data-filter]');
-    const cards   = document.querySelectorAll('[data-category]');
-    buttons.forEach(btn => {
+    // Category filter buttons
+    const filterBtns = document.querySelectorAll('[data-filter]');
+    const cards = document.querySelectorAll('[data-category]');
+    let currentFilter = 'All';
+
+    filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-        buttons.forEach(b => {
+        currentFilter = btn.dataset.filter;
+        filterBtns.forEach(b => {
           b.classList.remove('bg-blue', 'text-white');
           b.classList.add('bg-bg-alt', 'text-slate-mid');
         });
         btn.classList.add('bg-blue', 'text-white');
         btn.classList.remove('bg-bg-alt', 'text-slate-mid');
+
+        // When filtering, show all matching cards regardless of load-more state
         cards.forEach(card => {
-          card.style.display = (filter === 'All' || card.dataset.category === filter) ? '' : 'none';
+          const match = currentFilter === 'All' || card.dataset.category === currentFilter;
+          card.style.display = match ? '' : 'none';
         });
+
+        // Hide load more button when a filter is active
+        const wrap = document.getElementById('load-more-wrap');
+        if (wrap) wrap.style.display = currentFilter === 'All' ? '' : 'none';
+
+        // If back to All, re-apply the 9-card limit
+        if (currentFilter === 'All') {
+          allCards.forEach((card, i) => {
+            card.style.display = i < 9 ? '' : 'none';
+          });
+          if (wrap) wrap.style.display = '';
+        }
       });
     });
+
+    // Load more
+    const allCards = Array.from(cards);
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const loadMoreWrap = document.getElementById('load-more-wrap');
+
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        allCards.forEach(card => { card.style.display = ''; });
+        if (loadMoreWrap) loadMoreWrap.style.display = 'none';
+      });
+    }
   </script>
 
   <CTABanner
