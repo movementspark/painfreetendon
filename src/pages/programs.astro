@@ -149,19 +149,48 @@ import CTABanner  from '../components/CTABanner.astro';
       <p class="text-sm text-slate-soft font-semibold uppercase tracking-widest mb-8">More programs coming soon</p>
       <div class="grid md:grid-cols-3 gap-6">
         {[
-          { icon: '🦵', title: 'Patellar Tendon Program',  body: 'Structured rehab for jumper\'s knee using decline squats, heavy slow resistance, and sport-specific loading.' },
-          { icon: '🎾', title: 'Tennis Elbow Program',     body: 'A step-by-step program for lateral epicondylitis — from pain relief to full grip strength and return to sport.' },
-          { icon: '💪', title: 'Golfer\'s Elbow Program',  body: 'Progressive loading for medial epicondylalgia, with modifications for golfers, climbers, and overhead athletes.' },
+          {
+            icon: '🦵',
+            title: 'Patellar Tendon Program',
+            body: 'Structured rehab for jumper\'s knee using decline squats, heavy slow resistance, and sport-specific loading.',
+            waitlist: 'https://programs.painfreetendon.com/patellar-waitlist',
+          },
+          {
+            icon: '🎾',
+            title: 'Tennis Elbow Program',
+            body: 'A step-by-step program for lateral epicondylitis — from pain relief to full grip strength and return to sport.',
+            waitlist: 'https://programs.painfreetendon.com/tennis-elbow-waitlist',
+          },
+          {
+            icon: '💪',
+            title: 'Golfer\'s Elbow Program',
+            body: 'Progressive loading for medial epicondylalgia, with modifications for golfers, climbers, and overhead athletes.',
+            waitlist: 'https://programs.painfreetendon.com/golfers-elbow-waitlist',
+          },
         ].map(p => (
-          <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-card flex flex-col opacity-75">
+          <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-card flex flex-col">
             <div class="w-12 h-12 rounded-xl bg-blue-light flex items-center justify-center text-xl mb-4">
               {p.icon}
             </div>
-            <span class="text-xs font-bold uppercase tracking-widest text-slate-soft mb-3 block">Coming soon</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-blue mb-3 block">Coming soon</span>
             <h3 class="text-base font-extrabold text-slate mb-3">{p.title}</h3>
-            <p class="text-sm text-slate-soft leading-relaxed flex-1">{p.body}</p>
+            <p class="text-sm text-slate-soft leading-relaxed flex-1 mb-5">{p.body}</p>
+            <a
+              href={p.waitlist}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full border-2 border-blue text-blue hover:bg-blue hover:text-white transition-colors self-start"
+            >
+              Join the Waitlist →
+            </a>
           </div>
         ))}
+      </div>
+
+      <div class="mt-10 bg-gradient-to-br from-[#f8fbff] to-[#eef5ff] rounded-2xl p-8 border border-blue/10 text-center">
+        <h3 class="text-lg font-extrabold text-slate mb-2">Not sure which program is right for you?</h3>
+        <p class="text-sm text-slate-mid mb-5 max-w-lg mx-auto">Book a 1-on-1 session with Paul and get a personalised assessment, a clear diagnosis, and a plan tailored to your specific tendon and situation.</p>
+        <a href="/book" class="btn-primary text-sm">Book a Session →</a>
       </div>
     </div>
   </section>

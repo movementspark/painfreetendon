@@ -23,6 +23,15 @@ const tendons = [
       'Progress to heavy slow resistance: bilateral → single-leg heel raises',
       'Address training volume and footwear as contributing factors',
     ],
+    articles: [
+      { title: 'Achilles Tendinopathy Explained',          href: '/blog/achilles-tendinopathy-explained' },
+      { title: 'How to Treat Achilles Tendinopathy',       href: '/blog/how-to-treat-achilles-tendinopathy' },
+      { title: 'Achilles Heel Raises: The Loading Guide',  href: '/blog/achilles-heel-raises-loading-guide' },
+      { title: 'Insertional vs Mid-Portion Achilles',      href: '/blog/insertional-vs-midportion-achilles-tendinopathy' },
+      { title: 'Can I Run With Achilles Tendinopathy?',    href: '/blog/running-with-achilles-tendinopathy' },
+      { title: 'Morning Achilles Stiffness Explained',     href: '/blog/achilles-morning-stiffness-explained' },
+    ],
+    program: { label: 'Start the 12-Week Achilles Program →', href: 'https://programs.painfreetendon.com/achilles-program' },
   },
   {
     id:       'patellar',
@@ -42,6 +51,12 @@ const tendons = [
       'Heavy resistance training through full range — slow tempo (3-4 seconds)',
       'Monitor training volume; avoid back-to-back high-load sessions',
     ],
+    articles: [
+      { title: 'Patellar Tendinopathy: What It Is and How to Fix It', href: '/blog/patellar-tendinopathy-complete-guide' },
+      { title: 'Patellar Tendinopathy Self-Assessment',               href: '/blog/patellar-tendinopathy-self-assessment' },
+      { title: 'Why Tendon Pain Isn\'t About Damage',                  href: '/blog/why-tendon-pain-isnt-about-damage' },
+    ],
+    program: { label: 'Join the Patellar Program Waitlist →', href: 'https://programs.painfreetendon.com/patellar-waitlist' },
   },
   {
     id:       'hamstring',
@@ -61,6 +76,12 @@ const tendons = [
       'Progress to Nordic hamstring curls and Romanian deadlifts — with a forward lean',
       'Patience: proximal hamstring is a slow responder — allow 3–6 months',
     ],
+    articles: [
+      { title: 'Why Tendon Pain Keeps Coming Back',       href: '/blog/why-tendon-pain-keeps-coming-back' },
+      { title: 'Rest Won\'t Fix Your Tendon Pain',        href: '/blog/rest-wont-fix-tendon-pain' },
+      { title: 'The Isometric Exercise Explained',        href: '/blog/isometric-exercise-explained' },
+    ],
+    program: { label: 'Book a 1-on-1 Session →', href: '/book' },
   },
 ];
 ---
@@ -134,25 +155,43 @@ const tendons = [
           </div>
 
           <!-- What to do -->
-          <div class="bg-teal-light rounded-2xl p-7 border border-teal/20">
-            <h3 class="font-bold text-slate mb-5 flex items-center gap-2">
-              <span class="text-teal">✓</span> What to do
-            </h3>
-            <ol class="flex flex-col gap-4">
-              {t.what_to_do.map((step, idx) => (
-                <li class="flex items-start gap-4">
-                  <span class="w-7 h-7 rounded-full bg-teal text-white text-xs font-bold flex items-center justify-center flex-shrink-0">
-                    {idx + 1}
-                  </span>
-                  <span class="text-sm text-slate-mid leading-relaxed">{step}</span>
-                </li>
-              ))}
-            </ol>
+          <div class="flex flex-col gap-6">
+            <div class="bg-teal-light rounded-2xl p-7 border border-teal/20">
+              <h3 class="font-bold text-slate mb-5 flex items-center gap-2">
+                <span class="text-teal">✓</span> What to do
+              </h3>
+              <ol class="flex flex-col gap-4">
+                {t.what_to_do.map((step, idx) => (
+                  <li class="flex items-start gap-4">
+                    <span class="w-7 h-7 rounded-full bg-teal text-white text-xs font-bold flex items-center justify-center flex-shrink-0">
+                      {idx + 1}
+                    </span>
+                    <span class="text-sm text-slate-mid leading-relaxed">{step}</span>
+                  </li>
+                ))}
+              </ol>
+              <div class="mt-7 pt-5 border-t border-teal/15">
+                <a href={t.program.href} class="btn-primary text-sm">
+                  {t.program.label}
+                </a>
+              </div>
+            </div>
 
-            <div class="mt-7 pt-5 border-t border-teal/15">
-              <a href="/programs" class="btn-primary text-sm">
-                Start a structured program →
-              </a>
+            <!-- Related articles -->
+            <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-card">
+              <h3 class="font-bold text-slate mb-4">Related articles</h3>
+              <ul class="flex flex-col gap-3">
+                {t.articles.map(a => (
+                  <li>
+                    <a href={a.href} class="flex items-center gap-2 text-sm text-blue hover:underline font-medium">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0">
+                        <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      {a.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 

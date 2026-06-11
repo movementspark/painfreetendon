@@ -50,65 +50,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
         </div>
 
-        <!-- Contact form -->
-        <div class="bg-white rounded-2xl shadow-card-md border border-gray-100 p-8">
-          <h2 class="text-xl font-extrabold text-slate mb-2">Request a session</h2>
-          <p class="text-sm text-slate-soft mb-6">Fill in the form and Paul will be in touch within 24 hours to confirm a time.</p>
+        <!-- Booking card -->
+        <div class="bg-white rounded-2xl shadow-card-md border border-gray-100 p-8 flex flex-col">
+          <h2 class="text-xl font-extrabold text-slate mb-2">Book online — pick your time</h2>
+          <p class="text-sm text-slate-soft mb-8">Choose a time that works for you. You'll get a confirmation email with the video call link.</p>
 
-          <form class="flex flex-col gap-4">
-            <div class="grid grid-cols-2 gap-4">
-              <div>
-                <label class="text-xs font-semibold text-slate-mid block mb-1.5">First name</label>
-                <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue/20" />
+          <a
+            href="https://4pointshealth.janeapp.com/#/staff_member/117"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary text-center text-base py-4 mb-4"
+          >
+            Book a Session →
+          </a>
+
+          <p class="text-xs text-slate-soft text-center mb-8">Opens our secure booking system. No account needed.</p>
+
+          <div class="border-t border-gray-100 pt-6 flex flex-col gap-4">
+            {[
+              { icon: '🕐', text: '60-minute virtual session' },
+              { icon: '📅', text: 'Choose a date and time that suits you' },
+              { icon: '💻', text: 'Video call link sent automatically' },
+              { icon: '📧', text: 'Email summary of your plan after the session' },
+            ].map(item => (
+              <div class="flex items-center gap-3 text-sm text-slate-mid">
+                <span class="text-lg">{item.icon}</span>
+                {item.text}
               </div>
-              <div>
-                <label class="text-xs font-semibold text-slate-mid block mb-1.5">Last name</label>
-                <input type="text" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue/20" />
-              </div>
-            </div>
+            ))}
+          </div>
 
-            <div>
-              <label class="text-xs font-semibold text-slate-mid block mb-1.5">Email address</label>
-              <input type="email" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue/20" />
-            </div>
-
-            <div>
-              <label class="text-xs font-semibold text-slate-mid block mb-1.5">Which tendon is giving you trouble?</label>
-              <select class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-slate-mid focus:outline-none focus:ring-2 focus:ring-blue/20 bg-white">
-                <option value="">Select a tendon...</option>
-                <option>Achilles tendon</option>
-                <option>Patellar tendon (jumper's knee)</option>
-                <option>Proximal hamstring</option>
-                <option>Tennis elbow (lateral epicondyle)</option>
-                <option>Golfer's elbow (medial epicondyle)</option>
-                <option>Rotator cuff / shoulder</option>
-                <option>Other / not sure</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="text-xs font-semibold text-slate-mid block mb-1.5">How long have you had symptoms?</label>
-              <select class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm text-slate-mid focus:outline-none focus:ring-2 focus:ring-blue/20 bg-white">
-                <option value="">Select...</option>
-                <option>Less than 6 weeks</option>
-                <option>6 weeks – 3 months</option>
-                <option>3 – 6 months</option>
-                <option>6 months – 1 year</option>
-                <option>More than 1 year</option>
-              </select>
-            </div>
-
-            <div>
-              <label class="text-xs font-semibold text-slate-mid block mb-1.5">Anything else you'd like Paul to know?</label>
-              <textarea rows="3" class="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue/20 resize-none"></textarea>
-            </div>
-
-            <button type="submit" class="btn-primary justify-center text-sm mt-2">
-              Send request →
-            </button>
-
-            <p class="text-xs text-slate-soft text-center">Paul will respond within 24 hours to confirm your session.</p>
-          </form>
+          <div class="mt-6 bg-bg-alt rounded-xl p-4 border border-gray-100">
+            <p class="text-xs text-slate-soft leading-relaxed">
+              Questions before booking? Email Paul at <a href="mailto:paul@movementspark.com" class="text-blue hover:underline">paul@movementspark.com</a>
+            </p>
+          </div>
         </div>
 
       </div>

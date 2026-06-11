@@ -41,14 +41,68 @@ const jsonLd = JSON.stringify({
 });
 
 const categoryColors: Record<string, string> = {
-  'Pain Science':  'bg-blue-light text-blue',
-  'Achilles':      'bg-blue-light text-blue',
-  'Loading':       'bg-teal-light text-teal',
-  'Tennis Elbow':  'bg-teal-light text-teal',
-  'Recovery':      'bg-orange-50 text-orange-600',
-  'Research':      'bg-violet-50 text-violet-600',
+  'Pain Science':    'bg-blue-light text-blue',
+  'Achilles':        'bg-blue-light text-blue',
+  'Loading':         'bg-teal-light text-teal',
+  'Tennis Elbow':    'bg-teal-light text-teal',
+  'Recovery':        'bg-orange-50 text-orange-600',
+  'Research':        'bg-violet-50 text-violet-600',
+  'For Clinicians':  'bg-violet-50 text-violet-600',
+  'Running':         'bg-teal-light text-teal',
+  'Exercise':        'bg-blue-light text-blue',
+  'Symptoms':        'bg-teal-light text-teal',
+  'Nutrition':       'bg-teal-light text-teal',
+  'Rehabilitation':  'bg-blue-light text-blue',
 };
 const catColor = categoryColors[category] ?? 'bg-bg-alt text-slate-mid';
+
+// Category-specific CTAs
+type CtaConfig = { heading: string; body: string; primary: { label: string; href: string }; secondary: { label: string; href: string } };
+const categoryCtaMap: Record<string, CtaConfig> = {
+  'Achilles': {
+    heading: 'Ready to follow a structured Achilles program?',
+    body: 'The 12-week Achilles program takes you from pain relief through progressive loading all the way back to full activity — step by step.',
+    primary: { label: 'Start the Achilles Program →', href: 'https://programs.painfreetendon.com/achilles-program' },
+    secondary: { label: 'Book a 1-on-1 session', href: '/book' },
+  },
+  'Running': {
+    heading: 'Want a structured plan to get back to running?',
+    body: 'The 12-week Achilles program includes a progressive return-to-running protocol built around your tendon\'s actual readiness.',
+    primary: { label: 'Start the Achilles Program →', href: 'https://programs.painfreetendon.com/achilles-program' },
+    secondary: { label: 'Book a 1-on-1 session', href: '/book' },
+  },
+  'Exercise': {
+    heading: 'Want the full progressive loading program?',
+    body: 'The 12-week Achilles program walks you through every phase — isometrics, bilateral raises, single-leg loading, and heavy slow resistance.',
+    primary: { label: 'Start the Achilles Program →', href: 'https://programs.painfreetendon.com/achilles-program' },
+    secondary: { label: 'Book a 1-on-1 session', href: '/book' },
+  },
+  'Tennis Elbow': {
+    heading: 'Working through tennis elbow?',
+    body: 'A structured program for lateral epicondylitis is in development. Join the waitlist and get notified when it launches — plus the free Tennis Elbow Starter Guide in the meantime.',
+    primary: { label: 'Join the Tennis Elbow Waitlist →', href: 'https://programs.painfreetendon.com/tennis-elbow-waitlist' },
+    secondary: { label: 'Book a 1-on-1 session', href: '/book' },
+  },
+  'Recovery': {
+    heading: 'Not sure where you are in your recovery?',
+    body: 'A 1-on-1 virtual session gives you a clear assessment, a personalised loading plan, and a realistic timeline — based on your specific situation.',
+    primary: { label: 'Book a Session with Paul →', href: '/book' },
+    secondary: { label: 'Browse the Achilles Program', href: '/programs' },
+  },
+  'Symptoms': {
+    heading: 'Want a clear plan for your tendon symptoms?',
+    body: 'The 12-week Achilles program takes the guesswork out — giving you a stage-by-stage protocol with clear pain guidelines at every step.',
+    primary: { label: 'Start the Achilles Program →', href: 'https://programs.painfreetendon.com/achilles-program' },
+    secondary: { label: 'Book a 1-on-1 session', href: '/book' },
+  },
+};
+const defaultCta: CtaConfig = {
+  heading: 'Ready to take the next step?',
+  body: 'Browse structured rehab programs or book a 1-on-1 session with Paul to get a personalised plan.',
+  primary: { label: 'View Programs →', href: '/programs' },
+  secondary: { label: 'Book a Session', href: '/book' },
+};
+const cta = categoryCtaMap[category] ?? defaultCta;
 ---
 
 <BaseLayout title={title} description={description} ogImage={ogImage} ogType="article">
@@ -112,8 +166,25 @@ const catColor = categoryColors[category] ?? 'bg-bg-alt text-slate-mid';
         <slot />
       </div>
 
+      <!-- Mid-article email capture -->
+      <div class="my-10 bg-gradient-to-br from-[#EBF3FF] to-[#E6F8F5] rounded-2xl p-8 border border-blue/10">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-5">
+          <div class="flex-1">
+            <p class="text-xs font-bold uppercase tracking-widest text-blue mb-2">Free guide</p>
+            <h3 class="text-lg font-extrabold text-slate mb-1">Get the free Achilles Recovery Guide</h3>
+            <p class="text-sm text-slate-mid leading-relaxed">12 pages covering loading progressions, pain monitoring, morning stiffness, and more.</p>
+          </div>
+          <a
+            href="https://programs.painfreetendon.com/morning-stiffness"
+            class="btn-primary text-sm whitespace-nowrap flex-shrink-0"
+          >
+            Get the Free Guide →
+          </a>
+        </div>
+      </div>
+
       <!-- Author bio -->
-      <div class="mt-16 pt-8 border-t border-gray-100 flex items-start gap-5">
+      <div class="mt-10 pt-8 border-t border-gray-100 flex items-start gap-5">
         <div class="w-14 h-14 rounded-full overflow-hidden bg-blue-light flex-shrink-0">
           <img src="/paul-cramer.png" alt="Paul Cramer" class="w-full h-full object-cover object-top" />
         </div>
@@ -128,14 +199,14 @@ const catColor = categoryColors[category] ?? 'bg-bg-alt text-slate-mid';
     </div>
   </article>
 
-  <!-- Bottom CTA -->
+  <!-- Bottom CTA — category-specific -->
   <section class="py-16 bg-bg-teal border-t border-teal/10">
     <div class="max-w-3xl mx-auto px-6 text-center">
-      <h2 class="text-2xl font-extrabold text-slate mb-3">Ready to take the next step?</h2>
-      <p class="text-slate-mid text-sm mb-6">Browse structured rehab programs or book a 1-on-1 session with Paul to get a personalised plan.</p>
+      <h2 class="text-2xl font-extrabold text-slate mb-3">{cta.heading}</h2>
+      <p class="text-slate-mid text-sm mb-6 max-w-xl mx-auto">{cta.body}</p>
       <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/programs" class="btn-primary text-sm">View Programs →</a>
-        <a href="/book" class="btn-outline text-sm">Book a Session</a>
+        <a href={cta.primary.href} class="btn-primary text-sm">{cta.primary.label}</a>
+        <a href={cta.secondary.href} class="btn-outline text-sm">{cta.secondary.label}</a>
       </div>
     </div>
   </section>

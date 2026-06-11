@@ -23,6 +23,15 @@ const tendons = [
       'Progress to eccentric and heavy slow resistance: wrist curls over a table edge',
       'Review grip size, workstation ergonomics, and tool handles',
     ],
+    articles: [
+      { title: 'What Is Tennis Elbow?',                          href: '/blog/what-is-tennis-elbow' },
+      { title: 'How to Fix Tennis Elbow',                        href: '/blog/how-to-fix-tennis-elbow' },
+      { title: 'The Best Exercises for Tennis Elbow',            href: '/blog/tennis-elbow-exercises' },
+      { title: 'Tennis Elbow Recovery Time',                     href: '/blog/tennis-elbow-recovery-time' },
+      { title: 'Tennis Elbow Self-Assessment',                   href: '/blog/tennis-elbow-self-assessment' },
+      { title: 'Tennis Elbow in Non-Tennis Players',             href: '/blog/tennis-elbow-non-tennis-players' },
+    ],
+    program: { label: 'Join the Tennis Elbow Program Waitlist →', href: 'https://programs.painfreetendon.com/tennis-elbow-waitlist' },
   },
   {
     id:       'golfers-elbow',
@@ -42,6 +51,12 @@ const tendons = [
       'Progress to eccentric exercises: slow controlled wrist flexion lowering',
       'Address grip strength deficits and forearm muscle imbalances',
     ],
+    articles: [
+      { title: 'Golfer\'s Elbow: The Complete Guide',        href: '/blog/golfers-elbow-complete-guide' },
+      { title: 'Golfer\'s Elbow vs Tennis Elbow',           href: '/blog/golfers-elbow-vs-tennis-elbow' },
+      { title: 'Cortisone Shots for Tendon Pain',           href: '/blog/cortisone-shots-tendon-pain' },
+    ],
+    program: { label: 'Join the Golfer\'s Elbow Program Waitlist →', href: 'https://programs.painfreetendon.com/golfers-elbow-waitlist' },
   },
   {
     id:       'rotator-cuff',
@@ -61,6 +76,12 @@ const tendons = [
       'Progressive rotator cuff strengthening: external rotation, side-lying raises',
       'Address thoracic mobility and scapular control as contributing factors',
     ],
+    articles: [
+      { title: 'Why Tendon Pain Isn\'t About Damage',      href: '/blog/why-tendon-pain-isnt-about-damage' },
+      { title: 'The Isometric Exercise Explained',         href: '/blog/isometric-exercise-explained' },
+      { title: 'Shockwave Therapy: What the Evidence Says', href: '/blog/shockwave-therapy-tendinopathy-evidence' },
+    ],
+    program: { label: 'Book a 1-on-1 Session with Paul →', href: '/book' },
   },
 ];
 ---
@@ -131,22 +152,41 @@ const tendons = [
             </div>
           </div>
 
-          <div class="bg-teal-light rounded-2xl p-7 border border-teal/20">
-            <h3 class="font-bold text-slate mb-5 flex items-center gap-2">
-              <span class="text-teal">✓</span> What to do
-            </h3>
-            <ol class="flex flex-col gap-4">
-              {t.what_to_do.map((step, idx) => (
-                <li class="flex items-start gap-4">
-                  <span class="w-7 h-7 rounded-full bg-teal text-white text-xs font-bold flex items-center justify-center flex-shrink-0">
-                    {idx + 1}
-                  </span>
-                  <span class="text-sm text-slate-mid leading-relaxed">{step}</span>
-                </li>
-              ))}
-            </ol>
-            <div class="mt-7 pt-5 border-t border-teal/15">
-              <a href="/programs" class="btn-primary text-sm">Start a structured program →</a>
+          <div class="flex flex-col gap-6">
+            <div class="bg-teal-light rounded-2xl p-7 border border-teal/20">
+              <h3 class="font-bold text-slate mb-5 flex items-center gap-2">
+                <span class="text-teal">✓</span> What to do
+              </h3>
+              <ol class="flex flex-col gap-4">
+                {t.what_to_do.map((step, idx) => (
+                  <li class="flex items-start gap-4">
+                    <span class="w-7 h-7 rounded-full bg-teal text-white text-xs font-bold flex items-center justify-center flex-shrink-0">
+                      {idx + 1}
+                    </span>
+                    <span class="text-sm text-slate-mid leading-relaxed">{step}</span>
+                  </li>
+                ))}
+              </ol>
+              <div class="mt-7 pt-5 border-t border-teal/15">
+                <a href={t.program.href} class="btn-primary text-sm">{t.program.label}</a>
+              </div>
+            </div>
+
+            <!-- Related articles -->
+            <div class="bg-white rounded-2xl p-7 border border-gray-100 shadow-card">
+              <h3 class="font-bold text-slate mb-4">Related articles</h3>
+              <ul class="flex flex-col gap-3">
+                {t.articles.map(a => (
+                  <li>
+                    <a href={a.href} class="flex items-center gap-2 text-sm text-blue hover:underline font-medium">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" class="flex-shrink-0">
+                        <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      {a.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
