@@ -1,0 +1,45 @@
+---
+import BaseLayout   from '@layouts/BaseLayout.astro';
+import Testimonials from '@components/Testimonials.astro';
+import CTABanner     from '@components/CTABanner.astro';
+---
+
+<BaseLayout
+  title="Client Stories"
+  description="Real stories from clients who worked with Paul Cramer, RMT to resolve stubborn Achilles and tendon pain and get back to running and the activities they love."
+>
+
+  <!-- ── HERO ── -->
+  <section class="bg-gradient-to-br from-[#f8fbff] via-[#eef5ff] to-[#f0fbf9] py-20 md:py-28">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest text-teal mb-5">Client Stories</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-slate leading-[1.1] tracking-tight mb-6">
+        Real people, real tendon recoveries
+      </h1>
+      <p class="text-lg text-slate-mid leading-relaxed">
+        These are stories from clients who came in stuck, frustrated, and out of options — in their own words.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <Testimonials variant="full" />
+      <p class="text-center text-xs text-slate-soft mt-10 max-w-xl mx-auto leading-relaxed">
+        Shared with permission. Individual results vary — these stories reflect each person's own experience and aren't a guarantee of outcome.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <CTABanner
+    badge="Your Turn"
+    title="Ready to stop guessing and start building capacity?"
+    body="Book a virtual session with Paul for a clear assessment and a plan built around what your tendon actually needs."
+    primaryCta={{ label: 'Book a Virtual Session →', href: '/book' }}
+    secondaryCta={{ label: 'Browse Programs', href: '/programs' }}
+    variant="teal"
+  />
+
+</BaseLayout>
