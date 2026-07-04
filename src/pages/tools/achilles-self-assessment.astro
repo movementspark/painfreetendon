@@ -1,0 +1,192 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import CTABanner  from '@components/CTABanner.astro';
+
+// TODO (Paul): create the form at tally.so, then paste its form ID below.
+// Tally dashboard → your form → Share → Embed → copy the ID out of the embed URL
+// (the part after tally.so/r/ or forms.tally.so/r/), e.g. "mJ2Xyz"
+const TALLY_FORM_ID = 'REPLACE_WITH_TALLY_FORM_ID';
+---
+
+<BaseLayout
+  title="Achilles Tendinopathy Self-Assessment"
+  description="Not sure if your heel or Achilles pain is tendinopathy? Use this free educational self-assessment to understand common Achilles pain patterns and what to do next."
+  ogImage="/achilles-tendinopathy-explained.jpg"
+>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#f8fbff] via-[#eef5ff] to-[#f0fbf9] py-20 md:py-28">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest text-teal mb-5">Free Self-Assessment &middot; 3 Minutes</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-slate leading-[1.1] tracking-tight mb-5">
+        Could This Be <span class="text-blue relative inline-block">Achilles Tendinopathy<span class="absolute -bottom-0.5 left-0 right-0 h-[3px] bg-teal rounded-full"></span></span>?
+      </h1>
+      <p class="text-lg text-slate-mid leading-relaxed mb-8 max-w-xl mx-auto">
+        A free 3-minute self-assessment — no email required to see your result. Stop guessing whether your heel or Achilles pain fits a common, very treatable pattern.
+      </p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="#assessment" class="btn-primary">Start the Assessment ↓</a>
+      </div>
+      <p class="mt-6 text-sm text-slate-soft flex items-center justify-center gap-2">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" stroke="#0D9A8A" stroke-width="1.5"/>
+          <path d="M5 8L7 10L11 6" stroke="#0D9A8A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Educational only — not a diagnosis
+      </p>
+    </div>
+  </section>
+
+  <!-- Short explanation -->
+  <section class="py-16 bg-white">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <p class="text-lg text-slate-mid leading-relaxed">
+        Achilles pain is confusing because the advice out there is contradictory — rest it, stretch it, push through it. This tool won't diagnose you, but in about three minutes it will tell you whether your symptoms fit the common pattern of Achilles tendinopathy, and what a reasonable next step looks like. It's the same framework used throughout PainFreeTendon: understand the tendon's capacity before guessing at a fix.
+      </p>
+    </div>
+  </section>
+
+  <!-- Embedded questionnaire -->
+  <section id="assessment" class="py-16 bg-bg-alt scroll-mt-20">
+    <div class="max-w-3xl mx-auto px-6">
+
+      <div class="bg-blue-light border border-blue/10 rounded-2xl px-6 py-4 mb-6 text-sm text-slate-mid">
+        <strong class="text-slate">This tool is for education only</strong> and does not provide a medical diagnosis. If you have sudden severe pain, significant swelling, inability to walk, signs of infection, or symptoms after a major injury, seek medical assessment.
+      </div>
+
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden">
+        {TALLY_FORM_ID === 'REPLACE_WITH_TALLY_FORM_ID' ? (
+          <!-- Placeholder shown until the real Tally form ID is set above -->
+          <div class="p-10 text-center">
+            <p class="text-sm font-bold uppercase tracking-widest text-teal mb-3">Assessment loading here</p>
+            <p class="text-slate-mid leading-relaxed max-w-md mx-auto">
+              This block will show the live self-assessment once the Tally form is built and its form ID is
+              added to <code class="text-xs bg-bg-alt px-1.5 py-0.5 rounded">TALLY_FORM_ID</code> in this page.
+              See the build package for the full question set and scoring logic.
+            </p>
+          </div>
+        ) : (
+          <iframe
+            data-tally-src={`https://tally.so/embed/${TALLY_FORM_ID}?alignLeft=1&hideTitle=1&dynamicHeight=1`}
+            loading="lazy"
+            width="100%"
+            height="600"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            title="Achilles Tendinopathy Self-Assessment"
+          ></iframe>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Tally embed script: only needed once a real form ID is wired up above -->
+  <script is:inline>
+    var d = document, w = "https://tally.so/widgets/embed.js", v = function () {
+      if (typeof Tally !== "undefined") { Tally.loadEmbeds(); }
+      else { d.querySelectorAll("iframe[data-tally-src]").forEach(function (e) { e.src = e.dataset.tallySrc; }); }
+    };
+    if (typeof Tally !== "undefined") { v(); }
+    else if (d.querySelector('script[src="' + w + '"]') == null) {
+      var s = d.createElement("script"); s.src = w; s.onload = v; s.onerror = v; d.body.appendChild(s);
+    }
+  </script>
+
+  <!-- What this tool can and cannot tell you -->
+  <section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="section-title text-center mb-12">What this tool can and cannot tell you</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card p-7">
+          <div class="w-10 h-10 rounded-xl bg-teal-light flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 10L8 14L16 6" stroke="#0D9A8A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-extrabold text-slate mb-2">It can</h3>
+          <p class="text-slate-mid leading-relaxed">
+            Help you recognize whether your symptoms fit a well-known pattern, flag when medical assessment should come first, and point you toward a sensible next step.
+          </p>
+        </div>
+        <div class="card p-7">
+          <div class="w-10 h-10 rounded-xl bg-blue-light flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M6 6L14 14M14 6L6 14" stroke="#1D6FD8" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-extrabold text-slate mb-2">It cannot</h3>
+          <p class="text-slate-mid leading-relaxed">
+            Diagnose you, rule out other conditions, or replace a hands-on assessment. Think of it as a clarity check, not a verdict.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Achilles recovery needs a plan -->
+  <section class="py-20 bg-bg-teal">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <h2 class="section-title mb-5">Why Achilles recovery needs a plan</h2>
+      <p class="section-sub">
+        Achilles tendinopathy doesn't respond well to guesswork in either direction — too much rest and the tendon loses capacity; too much, too soon, and it stays irritated. What actually works is a staged plan: calm it down, rebuild capacity, and return to what you care about, in that order. That's what a Recovery Planning Session gives you.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CTABanner
+    badge="Next Step"
+    title="Ready for a clear plan instead of another guess?"
+    body="A Recovery Planning Session gives you a real assessment, a clear explanation of what's going on, and a loading plan you can start right away."
+    primaryCta={{ label: 'Book a Recovery Planning Session', href: '/book' }}
+    secondaryCta={{ label: 'Learn more about Achilles Tendinopathy', href: '/blog/achilles-tendinopathy-explained' }}
+    variant="blue"
+  />
+
+  <!-- Related Recovery Library reading -->
+  <section class="py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="section-title text-center mb-3">Related reading</h2>
+      <p class="section-sub text-center mb-12 max-w-xl mx-auto">Go deeper on the ideas behind your result.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        {[
+          {
+            title: 'Achilles Tendonitis: Everything You Need to Know',
+            href: '/blog/achilles-tendinopathy-explained',
+            excerpt: 'A full, jargon-free breakdown of what Achilles tendinopathy actually is.',
+          },
+          {
+            title: "Why Tendon Pain Isn't About Damage",
+            href: '/blog/why-tendon-pain-isnt-about-damage',
+            excerpt: 'Understanding the difference between tendon irritability and structural damage.',
+          },
+          {
+            title: "Rest Won't Fix Your Tendon Pain — Here's What Actually Will",
+            href: '/blog/rest-wont-fix-tendon-pain',
+            excerpt: 'Why load, not rest, is the primary driver of tendon recovery.',
+          },
+        ].map(a => (
+          <a href={a.href} class="card p-6 flex flex-col no-underline">
+            <h3 class="text-base font-extrabold text-slate mb-2 leading-snug">{a.title}</h3>
+            <p class="text-sm text-slate-soft leading-relaxed mb-4 flex-1">{a.excerpt}</p>
+            <span class="btn-ghost text-sm">
+              Read article
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        ))}
+      </div>
+      <p class="text-center mt-10">
+        <a href="/resources" class="btn-ghost">Browse all Recovery Library articles
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
