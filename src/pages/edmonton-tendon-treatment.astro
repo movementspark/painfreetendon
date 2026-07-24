@@ -1,0 +1,226 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import TrustSection from '@components/TrustSection.astro';
+import CTABanner from '@components/CTABanner.astro';
+
+const ASSESSMENT_URL = '/tools/achilles-self-assessment';
+const BOOK_URL = 'https://4pointshealth.janeapp.com/#/staff_member/117';
+const CLINIC_URL = 'https://www.4pointshealth.com/tendinitis-and-tendinopathy';
+
+const faqs = [
+  {
+    q: 'Do I need a referral to book an in-person session?',
+    a: "No referral needed. As an RMT, I can see you directly — just book a time and come in. If your case turns out to need another type of specialist, I'll tell you and help point you the right way.",
+  },
+  {
+    q: 'Is in-person treatment covered by insurance?',
+    a: '4 Points Health offers direct billing for most extended health plans, and massage therapy is covered by many plans. Bring your insurance details to your first visit and the front desk can check your coverage before you pay anything.',
+  },
+  {
+    q: "What's the difference between the free assessment and an in-person visit?",
+    a: "The free assessment is educational — it takes about three minutes and helps you understand whether your symptoms fit a typical Achilles tendinopathy pattern. An in-person visit is a full hands-on evaluation: I'll assess your movement, load tolerance, and history, then build you a specific plan and treat you directly.",
+  },
+  {
+    q: 'Which areas around Edmonton do you serve?',
+    a: 'I see patients in person at 4 Points Health in central Edmonton, and regularly treat people coming from St. Albert, Sherwood Park, Fort Saskatchewan, and the surrounding area. If you can get to the clinic, I can help.',
+  },
+  {
+    q: "I'm outside Edmonton — can I still work with you?",
+    a: "Yes. Everything on this site, including the 12-week Achilles program and virtual 1-on-1 sessions, works remotely. In-person care at 4 Points Health is an additional option for people local to Edmonton, not a requirement.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.a,
+    },
+  })),
+};
+
+const medicalBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: 'Pain Free Tendon',
+  description: 'In-person tendon and Achilles tendinopathy treatment with Paul Cramer, RMT, based in Edmonton, Alberta.',
+  url: 'https://painfreetendon.com/edmonton-tendon-treatment',
+  image: 'https://painfreetendon.com/paul-cramer.png',
+  telephone: '+1-780-705-5775',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '11634 142 Street, Suite 110',
+    addressLocality: 'Edmonton',
+    addressRegion: 'AB',
+    postalCode: 'T5M 1V4',
+    addressCountry: 'CA',
+  },
+  areaServed: ['Edmonton', 'St. Albert', 'Sherwood Park', 'Fort Saskatchewan'],
+  employee: {
+    '@type': 'Person',
+    name: 'Paul Cramer',
+    jobTitle: 'Registered Massage Therapist',
+  },
+  sameAs: ['https://www.4pointshealth.com', 'https://painfreetendon.com'],
+};
+---
+
+<BaseLayout
+  title="Edmonton Tendon & Achilles Treatment"
+  description="In-person tendon and Achilles tendinopathy treatment in Edmonton with Paul Cramer, RMT. Evidence-informed, hands-on care at 4 Points Health, plus a free self-assessment to start with."
+  ogImage="/achilles-tendinopathy-explained.jpg"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(medicalBusinessSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#f8fbff] via-[#eef5ff] to-[#f0fbf9] py-20 md:py-28">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest text-teal mb-5">In-Person Care &middot; Edmonton, AB</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-slate leading-[1.1] tracking-tight mb-5">
+        In-Person Tendon &amp; <span class="text-blue relative inline-block">Achilles Treatment<span class="absolute -bottom-0.5 left-0 right-0 h-[3px] bg-teal rounded-full"></span></span> in Edmonton
+      </h1>
+      <p class="text-lg text-slate-mid leading-relaxed mb-8 max-w-2xl mx-auto">
+        Everything on this site works whether you're figuring this out on your own or working with someone directly. If you're in the Edmonton area, you can do both: start with the free self-assessment, then come see me in person at 4 Points Health for a hands-on evaluation and treatment plan.
+      </p>
+      <div class="flex flex-wrap gap-3 justify-center mb-6">
+        <a href={ASSESSMENT_URL} class="btn-primary">Take the Free Assessment →</a>
+        <a href={BOOK_URL} target="_blank" rel="noopener noreferrer" class="btn-outline">Book In-Person at 4 Points Health →</a>
+      </div>
+      <p class="text-sm text-slate-soft">Direct billing available &middot; Free parking &middot; 2 blocks from Telus World of Science</p>
+    </div>
+  </section>
+
+  <!-- Bridge paragraph -->
+  <section class="py-16 bg-white">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <p class="text-lg text-slate-mid leading-relaxed">
+        I built PainFreeTendon because most tendon advice online is either too vague to act on or too technical to use. The free resources and self-assessment here give you that framework no matter where you live. But if you're local to Edmonton, there's no substitute for a real hands-on assessment — so I also see patients in person at 4 Points Health, the multi-disciplinary clinic where I practice.
+      </p>
+    </div>
+  </section>
+
+  <!-- Where I see patients -->
+  <section class="py-16 md:py-20 bg-bg-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+
+        <div>
+          <span class="badge badge-teal">Where I See Patients</span>
+          <h2 class="section-title mb-6">4 Points Health &amp; Wellness</h2>
+
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-card p-7 mb-6">
+            <p class="font-bold text-slate mb-1">4 Points Health &amp; Wellness</p>
+            <p class="text-slate-mid text-sm leading-relaxed mb-3">
+              11634 142 Street, Suite 110<br />
+              Edmonton, AB&nbsp;T5M&nbsp;1V4
+            </p>
+            <a href="tel:+17807055775" class="text-blue font-semibold text-sm hover:underline">780.705.5775</a>
+          </div>
+
+          <div class="flex flex-col gap-3 text-sm text-slate-mid mb-6">
+            <div class="flex items-start gap-3">
+              <span class="text-lg">🅿️</span>
+              <span>Free parking on site</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-lg">📍</span>
+              <span>Two blocks north of Telus World of Science</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-lg">💳</span>
+              <span>Direct billing available for most extended health plans</span>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-soft leading-relaxed">
+            Also serving patients from St. Albert, Sherwood Park, Fort Saskatchewan, and the surrounding Edmonton area.
+          </p>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-card h-full min-h-[360px]">
+          <iframe
+            src="https://www.google.com/maps?q=11634+142+Street+Suite+110+Edmonton+AB+T5M+1V4&output=embed"
+            width="100%"
+            height="100%"
+            style="min-height: 360px; border: 0;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="4 Points Health & Wellness on Google Maps"
+          ></iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- What in-person adds -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="badge">In-Person vs. On Your Own</span>
+        <h2 class="section-title">What a hands-on visit adds</h2>
+        <p class="section-sub">The free guidance here gets most people moving in the right direction. In-person care fills in what a website can't.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card p-8">
+          <div class="w-14 h-14 bg-blue-light rounded-xl flex items-center justify-center text-2xl mb-5">🖐️</div>
+          <h3 class="text-lg font-bold text-slate mb-2">Hands-on assessment</h3>
+          <p class="text-sm text-slate-mid leading-relaxed">I test your specific movement patterns and load tolerance directly, instead of you guessing from a screen.</p>
+        </div>
+        <div class="card p-8">
+          <div class="w-14 h-14 bg-teal-light rounded-xl flex items-center justify-center text-2xl mb-5">⚡</div>
+          <h3 class="text-lg font-bold text-slate mb-2">Manual therapy &amp; shockwave</h3>
+          <p class="text-sm text-slate-mid leading-relaxed">Treatment options like manual therapy and shockwave therapy are only available in person, and can speed up stubborn, chronic cases.</p>
+        </div>
+        <div class="card p-8">
+          <div class="w-14 h-14 bg-orange-50 rounded-xl flex items-center justify-center text-2xl mb-5">🤝</div>
+          <h3 class="text-lg font-bold text-slate mb-2">A coordinated team, if you need it</h3>
+          <p class="text-sm text-slate-mid leading-relaxed">
+            4 Points Health is a multi-disciplinary clinic. If your case would benefit from physiotherapy, chiropractic, or another discipline alongside your tendon treatment, that's under one roof.
+            <a href={CLINIC_URL} class="text-blue font-semibold hover:underline">See the full range of tendon treatment options →</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <TrustSection />
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-20 bg-bg-alt">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="badge badge-teal">Questions</span>
+        <h2 class="section-title">In-person care, answered</h2>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        {faqs.map((f) => (
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-card p-6">
+            <h3 class="font-bold text-slate mb-2">{f.q}</h3>
+            <p class="text-sm text-slate-mid leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    badge="Next Step"
+    title="Ready to deal with this properly?"
+    body="Start with the free self-assessment to get clear on your symptoms, then book an in-person visit at 4 Points Health in Edmonton whenever you're ready for a hands-on plan."
+    primaryCta={{ label: 'Take the Free Assessment →', href: ASSESSMENT_URL }}
+    secondaryCta={{ label: 'Book In-Person →', href: BOOK_URL }}
+    variant="dark"
+  />
+
+</BaseLayout>
