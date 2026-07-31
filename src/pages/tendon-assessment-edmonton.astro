@@ -1,0 +1,576 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import CTABanner from '@components/CTABanner.astro';
+
+const BOOK_URL = 'https://4pointshealth.janeapp.com/#/staff_member/117';
+
+const faqs = [
+  {
+    q: 'What if I am not sure this is tendinopathy?',
+    a: 'You do not need to be certain before booking. The assessment will explore whether your symptoms appear consistent with a tendon-related condition and whether additional assessment or referral may be needed.',
+  },
+  {
+    q: 'Will you diagnose my injury?',
+    a: 'As a Registered Massage Therapist, Paul assesses and treats within the scope of massage therapy. The appointment can identify findings that appear consistent with a tendon-related problem and guide rehabilitation planning, but it does not replace a medical diagnosis when one is required.',
+  },
+  {
+    q: 'Is this just a massage appointment?',
+    a: 'No. Hands-on treatment may be included, but this is primarily a structured assessment and recovery-planning appointment. A significant part of the session is devoted to understanding your symptoms, assessing capacity, providing education and establishing a plan.',
+  },
+  {
+    q: 'Will I receive exercises?',
+    a: 'Yes. Most clients will receive an initial exercise or loading plan appropriate to their presentation, tolerance and goals.',
+  },
+  {
+    q: 'Should I stop running or exercising before the appointment?',
+    a: 'Not necessarily. In many cases, complete rest is not required. Continue within a level that feels reasonably tolerable unless you have been advised otherwise by a healthcare professional. We will discuss activity modifications during the appointment.',
+  },
+  {
+    q: 'Is some pain during tendon rehabilitation acceptable?',
+    a: 'Sometimes mild or tolerable discomfort can occur during tendon exercise. The meaning of pain depends on its intensity, how it changes during activity and how the tendon responds later that day and the following day. Your roadmap will include guidance for monitoring this.',
+  },
+  {
+    q: 'Do I need imaging?',
+    a: 'Many tendon problems can initially be assessed without imaging. Imaging may be recommended when symptoms, history or progress suggest that further investigation would be useful.',
+  },
+  {
+    q: 'Can massage alone fix tendinopathy?',
+    a: 'Massage and hands-on care may help with pain, movement and comfort, but persistent tendon problems usually require appropriate activity management and progressive loading. The assessment is designed to connect these elements.',
+  },
+  {
+    q: 'Do you use shockwave therapy?',
+    a: 'Shockwave therapy may be considered for some persistent tendon problems. It is generally used as one part of a broader rehabilitation plan rather than as a replacement for exercise and load management.',
+  },
+  {
+    q: 'Is this covered by extended health benefits?',
+    a: 'The clinical appointment is provided by a Registered Massage Therapist and an RMT receipt can be issued where appropriate. Coverage depends on your individual insurance plan. Please confirm your eligibility and coverage directly with your insurer.',
+  },
+  {
+    q: 'What should I wear?',
+    a: 'Wear comfortable clothing that allows the relevant area to be observed and moved. Shorts are helpful for Achilles, knee and lower-limb assessments. A sleeveless shirt or tank top may be useful for shoulder and elbow concerns.',
+  },
+  {
+    q: 'What should I bring?',
+    a: 'Please bring or be prepared to discuss: previous imaging or reports, exercise programs you have tried, relevant footwear or braces, training history, your current activity schedule, and any questions or concerns you want addressed.',
+  },
+  {
+    q: 'What if another provider is more appropriate?',
+    a: "If your history or assessment suggests that you would benefit from medical evaluation, physiotherapy, imaging or another form of care, Paul will explain that recommendation.",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: 'Tendon Assessment and Recovery Roadmap',
+  name: 'Tendon Assessment and Recovery Roadmap',
+  description: 'A focused 75-minute in-person appointment to assess tendon symptoms, movement and capacity, and provide a personalized recovery roadmap.',
+  provider: {
+    '@type': 'Person',
+    name: 'Paul Cramer',
+    jobTitle: 'Registered Massage Therapist',
+  },
+  areaServed: { '@type': 'City', name: 'Edmonton, Alberta' },
+  offers: {
+    '@type': 'Offer',
+    price: '175',
+    priceCurrency: 'CAD',
+    availability: 'https://schema.org/InStock',
+    url: BOOK_URL,
+  },
+};
+
+const medicalBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: '4 Points Health and Wellness',
+  url: 'https://painfreetendon.com/tendon-assessment-edmonton',
+  priceRange: '$175',
+  telephone: '+1-780-705-5775',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '11634 142 Street, Suite 110',
+    addressLocality: 'Edmonton',
+    addressRegion: 'AB',
+    postalCode: 'T5M 1V4',
+    addressCountry: 'CA',
+  },
+  employee: {
+    '@type': 'Person',
+    name: 'Paul Cramer',
+    jobTitle: 'Registered Massage Therapist',
+  },
+};
+---
+
+<BaseLayout
+  title="Tendon Assessment in Edmonton"
+  description="Book a 75-minute tendon assessment in Edmonton with Paul Cramer, RMT. Understand your symptoms, assess your current capacity, and receive a personalized recovery roadmap."
+  ogImage="/og-default.png"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(medicalBusinessSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-[#f8fbff] via-[#eef5ff] to-[#f0fbf9] py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-teal mb-5">Tendon Assessment and Recovery Planning in Edmonton</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-slate leading-[1.1] tracking-tight mb-5">Tendon pain holding you back?</h1>
+        <p class="text-lg text-slate-mid leading-relaxed mb-4">Get a clearer understanding of what may be contributing to your symptoms and leave with a practical plan for what to do next.</p>
+        <p class="text-slate-mid leading-relaxed mb-4">The Tendon Assessment and Recovery Roadmap is a focused 75-minute appointment with Paul Cramer, Registered Massage Therapist and tendinopathy educator.</p>
+        <p class="text-slate-mid leading-relaxed mb-6">Together, we will review your symptoms, activity demands, movement and current tendon capacity. You will receive clear starting recommendations, an initial exercise plan and a personalized roadmap for moving forward.</p>
+        <p class="flex flex-wrap gap-x-2 gap-y-1 font-bold text-slate mb-6">
+          <span>75 minutes</span><span>&middot; $175</span><span>&middot; In person in Edmonton</span>
+        </p>
+        <a href={BOOK_URL} target="_blank" rel="noopener noreferrer" class="btn-primary" data-booking data-booking-source="hero">Book Your Tendon Assessment →</a>
+        <p class="text-sm text-slate-soft mt-3 max-w-sm">No referral is required. You do not need to know for certain that you have tendinopathy before booking.</p>
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-card-md">
+        <img
+          src="/paul-cramer.png"
+          alt="Paul Cramer, Registered Massage Therapist and tendinopathy educator, at his Edmonton clinic"
+          class="w-full h-full object-cover object-top"
+          width="700"
+          height="840"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <section class="bg-slate py-8">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-white text-lg font-bold mb-4">Paul Cramer, RMT</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-white/80 text-sm">
+        {[
+          'More than 25 years of clinical experience',
+          'Tendinopathy-focused assessment and rehabilitation',
+          'Massage therapy, movement education and progressive loading',
+          'Clear explanations and practical recovery planning',
+        ].map((item) => (
+          <li class="flex items-start gap-2">
+            <svg class="w-[18px] h-[18px] text-teal flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- You do not need to figure this out alone -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="section-title mb-5">Are you unsure what to do about your tendon pain?</h2>
+      <p class="text-slate-mid leading-relaxed mb-4">Many people with persistent tendon pain find themselves caught in the same cycle:</p>
+      <ol class="mb-5">
+        {[
+          'Rest until it feels better',
+          'Return to activity',
+          'Experience another flare-up',
+          'Try a different exercise or treatment',
+          'Become less certain about what to do next',
+        ].map((step, i) => (
+          <li class="flex items-start gap-3 py-3 border-b border-gray-100">
+            <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue text-white text-sm font-bold flex items-center justify-center">{i + 1}</span>
+            <span class="text-slate-mid pt-0.5">{step}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="text-slate-mid leading-relaxed mb-4">You may have been told to rest, stretch, strengthen, avoid pain, push through pain or stop the activity altogether.</p>
+      <p class="font-bold text-slate text-lg mb-2">The problem is often not a lack of effort.</p>
+      <p class="font-bold text-slate text-lg mb-4">The problem is a lack of a clear starting point, an appropriate loading plan and a way to decide when to progress or adjust.</p>
+      <p class="text-slate-mid leading-relaxed">The Tendon Assessment and Recovery Roadmap is designed to give you greater clarity, direction and confidence.</p>
+    </div>
+  </section>
+
+  <!-- Who this is for -->
+  <section class="py-16 md:py-20 bg-bg-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="section-title mb-8 max-w-2xl">This appointment may be helpful if you are experiencing:</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 mb-8">
+        {[
+          'Achilles tendon pain or recurring calf and heel stiffness',
+          'Patellar tendon pain below the kneecap',
+          "Tennis elbow or golfer's elbow",
+          'Rotator cuff-related tendon pain',
+          'Persistent tendon pain that returns whenever activity increases',
+          'Pain that improved with rest but never fully resolved',
+          'Difficulty returning to running, sport, exercise or work',
+          'Conflicting advice about whether to rest or keep moving',
+          'Uncertainty about which exercises to perform',
+          'A rehabilitation program that feels too easy, too difficult or unclear',
+          'Fear that pain means you are causing further damage',
+        ].map((item) => (
+          <li class="flex items-start gap-2">
+            <svg class="w-[18px] h-[18px] text-teal flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+            <span class="text-slate-mid">{item}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="font-bold text-slate mb-2">You do not need to diagnose yourself before booking.</p>
+      <p class="text-slate-mid leading-relaxed max-w-3xl">Part of the purpose of the assessment is to determine whether your presentation appears consistent with a tendon-related problem and whether another healthcare provider or further investigation may be appropriate.</p>
+    </div>
+  </section>
+
+  <!-- What you will receive -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <span class="badge">More Than a Massage Appointment</span>
+      <h2 class="section-title mb-8">What you will receive</h2>
+      <p class="text-slate-mid leading-relaxed mb-8 max-w-3xl">This is a structured assessment and recovery-planning appointment. Your session may include:</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+        {[
+          { t: 'A detailed review of your story', d: 'We will discuss when the problem began, what aggravates it, how it responds to activity, what treatment you have already tried and which activities matter most to you.' },
+          { t: 'Movement and capacity assessment', d: 'We will assess relevant movements, strength, tolerance and functional capacity based on the tendon and activities involved.' },
+          { t: 'Activity and load analysis', d: 'We will look at the demands being placed on the tendon and whether those demands currently exceed its capacity.' },
+          { t: 'A clear explanation', d: 'You will receive a practical explanation of what may be contributing to your symptoms, what appears most important and what should be addressed first.' },
+          { t: 'An initial exercise plan', d: 'You will learn an appropriate starting exercise or loading program based on your current tolerance and goals.' },
+          { t: 'Hands-on treatment when useful', d: 'Massage therapy, joint mobility work and other hands-on approaches may be included when they support comfort, movement or participation in rehabilitation.' },
+        ].map((item) => (
+          <div class="card p-6">
+            <h3 class="font-bold text-slate mb-2">{item.t}</h3>
+            <p class="text-sm text-slate-mid leading-relaxed">{item.d}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-white rounded-2xl border border-gray-100 border-l-4 border-l-blue shadow-card p-7">
+        <h3 class="font-bold text-slate mb-3">Your Recovery Roadmap</h3>
+        <p class="text-slate-mid mb-3">You will leave with clear recommendations for:</p>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
+          {[
+            'Managing activity and aggravating loads',
+            'Beginning or adjusting exercises',
+            'Monitoring pain and next-day symptoms',
+            'Deciding when to progress, maintain or reduce load',
+            'Expected next steps',
+            'Follow-up care',
+            'Referral or further assessment when appropriate',
+          ].map((item) => (
+            <li class="flex items-start gap-2">
+              <svg class="w-[18px] h-[18px] text-teal flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="text-slate-mid text-sm">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-16 md:py-20 bg-bg-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="section-title text-center mb-10">A clear four-step process</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        {[
+          { t: 'Book your assessment', d: 'Choose an available Tendon Assessment and Recovery Roadmap appointment through the secure 4 Points Health and Wellness booking system.' },
+          { t: 'Complete your intake', d: 'Before your appointment, you will complete a focused health and tendon questionnaire. This gives us more time during the appointment for assessment, explanation and planning.' },
+          { t: 'Meet with Paul', d: 'We will review your history, assess relevant movement and capacity, and identify an appropriate starting point.' },
+          { t: 'Begin your roadmap', d: 'You will leave with greater clarity, an initial plan and recommendations for the next phase of your recovery.' },
+        ].map((step, i) => (
+          <div>
+            <div class="w-11 h-11 rounded-full bg-blue text-white font-extrabold flex items-center justify-center mb-4">{i + 1}</div>
+            <h3 class="font-bold text-slate mb-2">{step.t}</h3>
+            <p class="text-sm text-slate-mid leading-relaxed">{step.d}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center">
+        <a href={BOOK_URL} target="_blank" rel="noopener noreferrer" class="btn-primary" data-booking data-booking-source="how-it-works">Book Your 75-Minute Assessment →</a>
+        <p class="text-sm text-slate-soft mt-3">$175 &middot; In person at 4 Points Health and Wellness in Edmonton</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet Paul -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest text-teal mb-4">Registered Massage Therapist &middot; Educator &middot; Tendinopathy-Focused Clinician</p>
+        <h2 class="section-title mb-5">Meet Paul Cramer</h2>
+        <p class="text-slate-mid leading-relaxed mb-4">I have worked as a Registered Massage Therapist for more than 25 years and have also spent several years teaching massage therapy.</p>
+        <p class="text-slate-mid leading-relaxed mb-4">Over time, I became increasingly interested in the gap between temporary symptom relief and meaningful, long-term recovery.</p>
+        <p class="text-slate-mid leading-relaxed mb-4">People with tendon pain are often given isolated treatments, generic exercises or conflicting advice without a clear understanding of how everything fits together.</p>
+        <p class="text-slate-mid leading-relaxed mb-3">My approach combines:</p>
+        <ul class="mb-5 flex flex-col gap-2">
+          {[
+            'Careful listening and assessment',
+            'Modern pain and tendon science',
+            'Massage therapy and manual treatment',
+            'Movement education',
+            'Progressive exercise and tendon loading',
+            'Clear recovery planning',
+          ].map((item) => (
+            <li class="flex items-start gap-2">
+              <svg class="w-[18px] h-[18px] text-teal flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="text-slate-mid">{item}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="text-slate-mid leading-relaxed mb-2">My goal is not simply to help you feel better for a short time.</p>
+        <p class="font-bold text-slate leading-relaxed">My goal is to help you understand your situation, identify a practical starting point and build the capacity required for the activities that matter to you.</p>
+      </div>
+      <div>
+        <!-- PLACEHOLDER: replace with a photo of Paul guiding a client through a movement assessment when available -->
+        <div class="border-2 border-dashed border-gray-200 rounded-2xl bg-bg-alt flex flex-col items-center justify-center text-center gap-2 p-8 min-h-[260px]">
+          <svg class="w-10 h-10 text-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19h16M6 19V9m6 10V5m6 14v-6"/></svg>
+          <p class="font-bold text-slate text-sm">Assessment photo placeholder</p>
+          <p class="text-xs text-slate-soft max-w-[28ch]">Alt text: "Paul Cramer guiding a client through a lower-limb movement assessment"</p>
+        </div>
+        <div class="mt-6">
+          <h3 class="font-bold text-slate mb-3">A message from Paul</h3>
+          <!-- PLACEHOLDER: embed a 45-60 second intro video (YouTube/Vimeo, lazy-loaded) once recorded -->
+          <div class="border-2 border-dashed border-gray-200 rounded-2xl bg-bg-alt flex flex-col items-center justify-center text-center gap-2 p-8 aspect-video">
+            <svg class="w-10 h-10 text-blue" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <p class="font-bold text-slate text-sm">Video placeholder</p>
+            <p class="text-xs text-slate-soft max-w-[30ch]">45&ndash;60 second introduction from Paul (script provided separately)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="py-16 md:py-20 bg-bg-alt">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="section-title mb-5">Calm symptoms. Build capacity. Return to activity.</h2>
+      <p class="text-slate-mid leading-relaxed mb-3">Tendon rehabilitation is not simply about eliminating pain. The larger goal is to help the tendon and the person gradually become capable of handling the demands of daily life, exercise, work or sport.</p>
+      <p class="text-slate-mid leading-relaxed mb-8">The PainFreeTendon approach follows three broad priorities:</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        {[
+          { border: 'border-t-teal', t: 'Calm the problem', d: 'Identify aggravating loads, reduce unnecessary irritation and establish a tolerable starting point.' },
+          { border: 'border-t-blue', t: 'Build capacity', d: "Use progressive exercise to improve the tendon's ability to tolerate strength, repetition and increasing activity." },
+          { border: 'border-t-teal', t: 'Return to meaningful activity', d: 'Prepare for the real demands of walking, running, lifting, work, recreation or sport.' },
+        ].map((c) => (
+          <div class={`card border-t-4 ${c.border} p-6`}>
+            <h3 class="font-bold text-slate mb-2">{c.t}</h3>
+            <p class="text-sm text-slate-mid leading-relaxed">{c.d}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-slate-mid leading-relaxed mt-8">Your plan should reflect your current capacity and goals rather than a generic protocol alone.</p>
+    </div>
+  </section>
+
+  <!-- What makes this different -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-2xl mx-auto px-6">
+      <span class="badge badge-teal">A Plan, Not a Collection of Treatments</span>
+      <h2 class="section-title mb-5">What makes this different</h2>
+      <p class="text-slate-mid leading-relaxed mb-5">The Tendon Assessment and Recovery Roadmap is designed to connect the different parts of recovery.</p>
+      <ul class="flex flex-col gap-2 mb-6">
+        {[
+          'You will not simply be told to rest.',
+          'You will not be handed a generic exercise sheet without explanation.',
+          'You will not be promised that one treatment will fix a persistent tendon problem.',
+        ].map((item) => (
+          <li class="flex items-start gap-2 text-slate-soft">
+            <svg class="w-[18px] h-[18px] flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="text-slate-mid leading-relaxed mb-4">Instead, we will work to answer five practical questions:</p>
+      <ol class="flex flex-col gap-3">
+        {[
+          'Does this appear consistent with a tendon-related problem?',
+          'What is currently aggravating it?',
+          'What can you safely continue doing?',
+          'What does the tendon need to build next?',
+          'How will you know when to progress or seek additional help?',
+        ].map((q, i) => (
+          <li class="flex items-start gap-3 bg-white border border-gray-100 shadow-card rounded-xl p-4">
+            <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue text-white text-sm font-bold flex items-center justify-center">{i + 1}</span>
+            <span class="font-semibold text-slate pt-0.5">{q}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Conditions -->
+  <section class="py-16 md:py-20 bg-bg-alt">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="section-title mb-8">Common tendon problems</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {[
+          { t: 'Achilles tendon pain', d: 'Including midportion and insertional Achilles presentations, recurring morning stiffness and pain during walking or running.' },
+          { t: 'Patellar tendon pain', d: 'Pain commonly felt below the kneecap during jumping, stairs, squatting or sports.' },
+          { t: "Tennis and golfer's elbow", d: 'Persistent elbow pain associated with gripping, lifting, racquet sports, work or repetitive hand activity.' },
+          { t: 'Shoulder and rotator cuff-related pain', d: 'Tendon-related shoulder symptoms that affect lifting, reaching, exercise, sleep or work.' },
+        ].map((c) => (
+          <div class="card p-6">
+            <h3 class="font-bold text-slate mb-2">{c.t}</h3>
+            <p class="text-sm text-slate-mid leading-relaxed">{c.d}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-slate-mid leading-relaxed mt-6"><strong class="text-slate">Other persistent tendon concerns:</strong> the assessment may also be appropriate for other tendon regions. Suitability can be discussed before or during the appointment.</p>
+    </div>
+  </section>
+
+  <!-- Appointment details -->
+  <section id="appointment-details" class="py-16 md:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="section-title mb-8">Tendon Assessment and Recovery Roadmap</h2>
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-card-md p-8">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-teal mb-1">Appointment Length</p>
+            <p class="font-bold text-slate text-lg">75 minutes</p>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-teal mb-1">Fee</p>
+            <p class="font-bold text-slate text-lg">$175</p>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-widest text-teal mb-1">Provider</p>
+            <p class="font-bold text-slate text-lg">Paul Cramer, RMT</p>
+          </div>
+        </div>
+
+        <p class="font-bold text-slate mb-1">Location</p>
+        <p class="text-slate-mid mb-1">4 Points Health and Wellness</p>
+        <p class="text-slate-mid mb-1">11634 142 Street, Suite 110</p>
+        <p class="text-slate-mid mb-5">Edmonton, AB&nbsp;T5M&nbsp;1V4 &middot; <a href="tel:+17807055775" class="text-blue font-semibold hover:underline">780.705.5775</a></p>
+
+        <p class="font-bold text-slate mb-3">The appointment includes:</p>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mb-8">
+          {[
+            'Pre-appointment intake',
+            'Detailed history and goal review',
+            'Movement and capacity assessment',
+            'Education and explanation',
+            'Initial exercise recommendations',
+            'Hands-on treatment when appropriate',
+            'Personalized recovery recommendations',
+            'Suggested next steps',
+          ].map((item) => (
+            <li class="flex items-start gap-2">
+              <svg class="w-[18px] h-[18px] text-teal flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="text-slate-mid text-sm">{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="text-center">
+          <a href={BOOK_URL} target="_blank" rel="noopener noreferrer" class="btn-primary" data-booking data-booking-source="appointment-details">Book Your Assessment →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What happens after -->
+  <section class="py-16 md:py-20 bg-bg-alt">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start">
+      <div>
+        <h2 class="section-title mb-5">Your next step will depend on what you need</h2>
+        <p class="text-slate-mid leading-relaxed mb-4">Some people primarily need education, a clear starting exercise plan and periodic progression.</p>
+        <p class="text-slate-mid leading-relaxed mb-3">Others may benefit from a combination of:</p>
+        <ul class="flex flex-col gap-2">
+          {[
+            'Massage therapy',
+            'Progressive tendon loading',
+            'Exercise coaching',
+            'Shockwave therapy where appropriate',
+            'Activity modification',
+            'Follow-up capacity testing',
+            'Coordination or referral to another healthcare provider',
+          ].map((item) => (
+            <li class="flex items-start gap-2">
+              <svg class="w-[18px] h-[18px] text-teal flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="text-slate-mid">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <!-- PLACEHOLDER: replace with a photo of Paul demonstrating a calf-strengthening exercise when available -->
+        <div class="border-2 border-dashed border-gray-200 rounded-2xl bg-white flex flex-col items-center justify-center text-center gap-2 p-8 min-h-[260px]">
+          <svg class="w-10 h-10 text-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3v18M6 8h12l-3-3m3 3-3 3"/></svg>
+          <p class="font-bold text-slate text-sm">Exercise demo photo placeholder</p>
+          <p class="text-xs text-slate-soft max-w-[28ch]">Alt text: "Paul Cramer demonstrating a calf-strengthening exercise"</p>
+        </div>
+        <p class="text-slate-mid leading-relaxed mt-5"><strong class="text-slate">You will not be pressured into a predetermined package.</strong> The goal of the initial appointment is to identify the most appropriate next step for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="section-title mb-8">Frequently asked questions</h2>
+      <div class="flex flex-col gap-3">
+        {faqs.map((f) => (
+          <details class="group bg-white border border-gray-100 shadow-card rounded-2xl p-5 open:pb-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer font-bold text-slate list-none">
+              {f.q}
+              <span class="text-blue text-xl leading-none flex-shrink-0 group-open:hidden">+</span>
+              <span class="text-blue text-xl leading-none flex-shrink-0 hidden group-open:inline">&minus;</span>
+            </summary>
+            <p class="text-sm text-slate-mid leading-relaxed mt-3">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    badge="75-Minute Assessment · $175 · Edmonton"
+    title="Stop guessing what your tendon needs"
+    body="Persistent tendon pain can be frustrating, especially when you have received conflicting advice or have repeatedly tried to return to activity without a clear progression plan. The Tendon Assessment and Recovery Roadmap is designed to help you understand your current situation and take a more confident next step."
+    primaryCta={{ label: 'Book Your Tendon Assessment →', href: BOOK_URL }}
+    variant="dark"
+  />
+
+  <!-- Disclaimer -->
+  <section class="py-8 bg-bg-alt pb-28 md:pb-8">
+    <div class="max-w-3xl mx-auto px-6 text-xs text-slate-soft leading-relaxed flex flex-col gap-2">
+      <p>The information on this page is for educational purposes and is not a substitute for individualized medical advice, diagnosis or emergency care.</p>
+      <p>Seek urgent medical attention for symptoms such as a sudden significant injury, inability to bear weight, suspected tendon rupture, major swelling or bruising, severe unexplained pain, signs of infection, chest pain, shortness of breath or other concerning symptoms.</p>
+    </div>
+  </section>
+
+  <!-- Sticky mobile CTA -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-gray-100 shadow-[0_-4px_14px_rgba(26,37,64,.15)] p-3">
+    <a href={BOOK_URL} target="_blank" rel="noopener noreferrer" class="btn-primary w-full justify-center" data-booking data-booking-source="mobile-sticky">Book Your Tendon Assessment</a>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+      function withUtm(baseUrl) {
+        try {
+          var pageParams = new URLSearchParams(window.location.search);
+          var url = new URL(baseUrl, window.location.href);
+          UTM_KEYS.forEach(function (key) {
+            if (pageParams.has(key)) url.searchParams.set(key, pageParams.get(key));
+          });
+          return url.toString();
+        } catch (e) {
+          return baseUrl;
+        }
+      }
+      document.querySelectorAll('[data-booking]').forEach(function (el) {
+        el.setAttribute('href', withUtm(el.getAttribute('href')));
+        el.addEventListener('click', function () {
+          if (window.va) window.va('event', { name: 'booking_click', source: el.getAttribute('data-booking-source') || 'unknown' });
+        });
+      });
+    })();
+  </script>
+</BaseLayout>
