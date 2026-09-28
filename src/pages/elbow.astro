@@ -1,0 +1,136 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CTABanner from '@components/CTABanner.astro';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Work out which elbow pattern fits',
+    body: 'Start by separating outer-elbow pain from inner-elbow pain and learning what common tendon symptoms look like. The goal is not to chase a perfect label, but to choose a sensible starting point.',
+    links: [
+      { title: 'What Is Tennis Elbow?', href: '/blog/what-is-tennis-elbow' },
+      { title: 'Tennis Elbow in Non-Tennis Players', href: '/blog/tennis-elbow-non-tennis-players' },
+      { title: 'Golfer’s Elbow vs Tennis Elbow', href: '/blog/golfers-elbow-vs-tennis-elbow' },
+      { title: 'Golfer’s Elbow: The Complete Guide', href: '/blog/golfers-elbow-complete-guide' },
+    ],
+  },
+  {
+    number: '02',
+    title: 'Reduce irritation without shutting everything down',
+    body: 'Persistent elbow pain often improves when the most provocative loads are adjusted while useful hand, wrist and arm activity continues. The goal is to stay active enough to preserve capacity without repeatedly provoking a large flare-up.',
+    links: [
+      { title: 'Can You Work With Tennis Elbow?', href: '/blog/can-you-work-with-tennis-elbow' },
+      { title: 'Why Tendon Pain Keeps Coming Back', href: '/blog/why-tendon-pain-keeps-coming-back' },
+      { title: 'Rest Won’t Fix Your Tendon Pain', href: '/blog/rest-wont-fix-tendon-pain' },
+    ],
+  },
+  {
+    number: '03',
+    title: 'Build wrist, forearm and grip capacity',
+    body: 'Exercise should progressively make the tissues more capable of gripping, lifting, typing, tool use, sport and everyday tasks. Start with tolerable loading and progress resistance and complexity over time.',
+    links: [
+      { title: 'The Best Exercises for Tennis Elbow', href: '/blog/tennis-elbow-exercises' },
+      { title: 'How to Fix Tennis Elbow', href: '/blog/how-to-fix-tennis-elbow' },
+      { title: 'Isometric Exercise Explained', href: '/blog/isometric-exercise-explained' },
+    ],
+  },
+  {
+    number: '04',
+    title: 'Use time and response to guide the return',
+    body: 'Recovery is usually measured in weeks and months rather than days. Track what you can grip, lift, work at and repeat—not only whether the elbow is completely pain-free.',
+    links: [
+      { title: 'Tennis Elbow Recovery Time', href: '/blog/tennis-elbow-recovery-time' },
+      { title: 'Tennis Elbow Self-Assessment', href: '/blog/tennis-elbow-self-assessment' },
+      { title: 'Shockwave Therapy: What the Evidence Says', href: '/blog/shockwave-therapy-tendinopathy-evidence' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Tennis Elbow & Golfer’s Elbow Guide"
+  description="A practical elbow tendinopathy hub for tennis elbow and golfer’s elbow: understand symptoms, manage load, build forearm capacity and return to work, lifting or sport."
+>
+  <Hero
+    eyebrow="Elbow Tendon Pain"
+    title="A clearer path through tennis elbow and golfer’s elbow"
+    body="Outer- or inner-elbow pain can make gripping, lifting, typing, tools and sport surprisingly difficult. Use this page to understand the pattern, choose a useful starting load and build capacity back."
+    primaryCta={{ label: 'Start with the elbow pathway', href: '#path' }}
+    secondaryCta={{ label: 'View upper body tendons', href: '/upper-body' }}
+  />
+
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <span class="badge badge-teal">The framework</span>
+      <h2 class="section-title mb-4">Reduce the irritation. Build the capacity. Return to the task.</h2>
+      <p class="text-slate-mid leading-relaxed mb-4">Tennis elbow usually refers to pain around the extensor tendon origin on the outside of the elbow. Golfer’s elbow involves the flexor-pronator tendon origin on the inside. Both can become sensitive when repeated demand exceeds current capacity.</p>
+      <p class="text-slate-mid leading-relaxed">The practical question is the same: what loads are aggravating the area now, what can you still do successfully, and how do we progressively build the wrist, forearm and grip capacity your work, training or sport requires?</p>
+    </div>
+  </section>
+
+  <section id="path" class="py-20 bg-bg-alt">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="max-w-3xl mb-10">
+        <span class="badge">Your elbow pathway</span>
+        <h2 class="section-title mb-3">Move from recognition to loading to return</h2>
+        <p class="section-sub">The elbow library is organized below so you can follow a sequence instead of opening isolated articles with no clear order.</p>
+      </div>
+
+      <div class="grid gap-6">
+        {steps.map(step => (
+          <article class="bg-white rounded-2xl border border-gray-100 p-7 shadow-card">
+            <div class="flex flex-col md:flex-row md:items-start gap-5">
+              <div class="w-12 h-12 rounded-full bg-teal text-white font-extrabold flex items-center justify-center flex-shrink-0">{step.number}</div>
+              <div class="flex-1">
+                <h3 class="text-xl font-extrabold text-slate mb-2">{step.title}</h3>
+                <p class="text-sm text-slate-mid leading-relaxed mb-5">{step.body}</p>
+                <ul class="grid md:grid-cols-2 gap-3">
+                  {step.links.map(link => (
+                    <li>
+                      <a href={link.href} class="block rounded-xl border border-gray-100 px-4 py-3 text-sm font-semibold text-blue hover:border-blue/30 hover:bg-blue-light transition-colors">
+                        {link.title} →
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl border border-gray-100 p-6 shadow-card">
+        <p class="text-xs font-bold uppercase tracking-widest text-blue mb-2">Outer elbow pain?</p>
+        <h3 class="font-extrabold text-slate mb-2">Start with tennis elbow</h3>
+        <p class="text-sm text-slate-mid leading-relaxed mb-4">Learn the common symptom pattern and the first loading decisions for lateral elbow tendinopathy.</p>
+        <a href="/blog/what-is-tennis-elbow" class="text-sm font-bold text-blue hover:underline">Read the overview →</a>
+      </div>
+      <div class="rounded-2xl border border-gray-100 p-6 shadow-card">
+        <p class="text-xs font-bold uppercase tracking-widest text-teal mb-2">Inner elbow pain?</p>
+        <h3 class="font-extrabold text-slate mb-2">Start with golfer’s elbow</h3>
+        <p class="text-sm text-slate-mid leading-relaxed mb-4">Use the complete guide to understand medial elbow tendon pain and how loading differs.</p>
+        <a href="/blog/golfers-elbow-complete-guide" class="text-sm font-bold text-blue hover:underline">Read the golfer’s elbow guide →</a>
+      </div>
+      <div class="rounded-2xl border border-gray-100 p-6 shadow-card">
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-soft mb-2">Need an individualized plan?</p>
+        <h3 class="font-extrabold text-slate mb-2">Work with Paul</h3>
+        <p class="text-sm text-slate-mid leading-relaxed mb-4">For persistent or complex symptoms, get help setting a realistic load and return-to-activity plan.</p>
+        <a href="/book" class="text-sm font-bold text-blue hover:underline">Book a session →</a>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    badge="Build capacity"
+    title="A sore elbow still needs useful load."
+    body="The goal is not to protect the arm forever. It is to build enough wrist, forearm and grip capacity for the work, training and activities you want to do."
+    primaryCta={{ label: 'Explore Tennis Elbow Resources →', href: '/blog/what-is-tennis-elbow' }}
+    secondaryCta={{ label: 'View upper body tendons', href: '/upper-body' }}
+    variant="teal"
+  />
+</BaseLayout>
