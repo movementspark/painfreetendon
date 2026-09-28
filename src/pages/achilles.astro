@@ -1,0 +1,137 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import CTABanner from '@components/CTABanner.astro';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Understand what you are dealing with',
+    body: 'Start with the basics: what Achilles tendinopathy is, why pain can persist, and why the goal is to build capacity rather than wait for the tendon to feel perfect.',
+    links: [
+      { title: 'Achilles Tendinopathy Explained', href: '/blog/achilles-tendinopathy-explained' },
+      { title: 'Insertional vs Midportion Achilles Tendinopathy', href: '/blog/insertional-vs-midportion-achilles-tendinopathy' },
+      { title: 'Why Tendon Pain Isn’t About Damage', href: '/blog/why-tendon-pain-isnt-about-damage' },
+    ],
+  },
+  {
+    number: '02',
+    title: 'Find the right starting load',
+    body: 'The next step is not complete rest. It is finding a tolerable starting point, monitoring the response, and using progressive loading to close the gap between current capacity and the demands of daily life or sport.',
+    links: [
+      { title: 'How to Treat Achilles Tendinopathy', href: '/blog/how-to-treat-achilles-tendinopathy' },
+      { title: 'Achilles Heel Raises: The Loading Guide', href: '/blog/achilles-heel-raises-loading-guide' },
+      { title: 'How to Progress Calf Raises for Achilles Tendinopathy', href: '/blog/how-to-progress-calf-raises-achilles-tendinopathy' },
+      { title: 'Heavy Slow Resistance Training for Achilles', href: '/blog/heavy-slow-resistance-training-achilles' },
+    ],
+  },
+  {
+    number: '03',
+    title: 'Judge recovery by response, not just pain',
+    body: 'Recovery is rarely perfectly linear. Morning stiffness, next-day response, strength and repeatability all help show whether your current dose is appropriate.',
+    links: [
+      { title: 'Morning Achilles Stiffness Explained', href: '/blog/achilles-morning-stiffness-explained' },
+      { title: 'Is My Achilles Tendinopathy Getting Better?', href: '/blog/is-my-achilles-tendinopathy-getting-better' },
+      { title: 'How Long Does Achilles Tendinopathy Take to Heal?', href: '/blog/how-long-does-achilles-tendinopathy-take-to-heal' },
+      { title: 'Achilles Tendinopathy Recovery Timeline', href: '/blog/achilles-tendinopathy-recovery-timeline' },
+    ],
+  },
+  {
+    number: '04',
+    title: 'Build back to running and sport',
+    body: 'Running and jumping ask more from the tendon than basic strength work. Return gradually, keep monitoring symptoms, and progress based on what the tendon can repeatedly tolerate.',
+    links: [
+      { title: 'Can I Run With Achilles Tendinopathy?', href: '/blog/can-i-run-with-achilles-tendinopathy' },
+      { title: 'Running With Achilles Tendinopathy', href: '/blog/running-with-achilles-tendinopathy' },
+      { title: 'Returning to Sport With Achilles Tendinopathy', href: '/blog/returning-to-sport-achilles-tendinopathy' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Achilles Tendinopathy Guide"
+  description="A practical Achilles tendinopathy hub: understand the problem, choose a starting load, build strength and return to running or sport with a clear progression."
+>
+  <Hero
+    eyebrow="Achilles Tendinopathy"
+    title="A clear path from painful Achilles to stronger Achilles"
+    body="You do not need another random exercise. You need to know what matters now, what to load next, and how to tell whether your tendon is adapting. Use this page as your map."
+    primaryCta={{ label: 'Start with the basics', href: '#path' }}
+    secondaryCta={{ label: 'Take the Achilles self-assessment', href: '/tools/achilles-self-assessment' }}
+  />
+
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <span class="badge badge-teal">The framework</span>
+      <h2 class="section-title mb-4">Calm the pain. Build the tendon. Return to life.</h2>
+      <p class="text-slate-mid leading-relaxed mb-4">Achilles tendinopathy is often a problem of demand exceeding current capacity. Rest may reduce symptoms for a while, but it does not rebuild the capacity needed for walking, running, jumping or sport.</p>
+      <p class="text-slate-mid leading-relaxed">A better approach is to manage the aggravating load, find a tolerable training dose, progressively build calf and tendon capacity, then reintroduce the faster and more demanding activities that matter to you.</p>
+    </div>
+  </section>
+
+  <section id="path" class="py-20 bg-bg-alt">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="max-w-3xl mb-10">
+        <span class="badge">Your Achilles pathway</span>
+        <h2 class="section-title mb-3">Use the right information at the right stage</h2>
+        <p class="section-sub">These articles are organized as a sequence so you can move from understanding to loading to return to activity without having to search the whole site.</p>
+      </div>
+
+      <div class="grid gap-6">
+        {steps.map(step => (
+          <article class="bg-white rounded-2xl border border-gray-100 p-7 shadow-card">
+            <div class="flex flex-col md:flex-row md:items-start gap-5">
+              <div class="w-12 h-12 rounded-full bg-blue text-white font-extrabold flex items-center justify-center flex-shrink-0">{step.number}</div>
+              <div class="flex-1">
+                <h3 class="text-xl font-extrabold text-slate mb-2">{step.title}</h3>
+                <p class="text-sm text-slate-mid leading-relaxed mb-5">{step.body}</p>
+                <ul class="grid md:grid-cols-2 gap-3">
+                  {step.links.map(link => (
+                    <li>
+                      <a href={link.href} class="block rounded-xl border border-gray-100 px-4 py-3 text-sm font-semibold text-blue hover:border-blue/30 hover:bg-blue-light transition-colors">
+                        {link.title} →
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl border border-gray-100 p-6 shadow-card">
+        <p class="text-xs font-bold uppercase tracking-widest text-blue mb-2">Not sure what you have?</p>
+        <h3 class="font-extrabold text-slate mb-2">Start with the self-assessment</h3>
+        <p class="text-sm text-slate-mid leading-relaxed mb-4">Use the free Achilles self-assessment to compare your symptoms with common Achilles tendinopathy patterns.</p>
+        <a href="/tools/achilles-self-assessment" class="text-sm font-bold text-blue hover:underline">Take the self-assessment →</a>
+      </div>
+      <div class="rounded-2xl border border-gray-100 p-6 shadow-card">
+        <p class="text-xs font-bold uppercase tracking-widest text-teal mb-2">Want structure?</p>
+        <h3 class="font-extrabold text-slate mb-2">Follow the Achilles program</h3>
+        <p class="text-sm text-slate-mid leading-relaxed mb-4">Move through a structured progression instead of deciding what exercise to do next each week.</p>
+        <a href="https://programs.painfreetendon.com/achilles-program" class="text-sm font-bold text-blue hover:underline">Explore the Achilles program →</a>
+      </div>
+      <div class="rounded-2xl border border-gray-100 p-6 shadow-card">
+        <p class="text-xs font-bold uppercase tracking-widest text-slate-soft mb-2">Complex or uncertain?</p>
+        <h3 class="font-extrabold text-slate mb-2">Work with Paul</h3>
+        <p class="text-sm text-slate-mid leading-relaxed mb-4">For an individualized starting point, loading plan and return-to-activity strategy.</p>
+        <a href="/book" class="text-sm font-bold text-blue hover:underline">Book a session →</a>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner
+    badge="Build capacity"
+    title="Your Achilles does not need perfection. It needs the right progression."
+    body="Start with what the tendon can tolerate now, then build step by step toward what you want it to handle again."
+    primaryCta={{ label: 'Start the Achilles Program →', href: 'https://programs.painfreetendon.com/achilles-program' }}
+    secondaryCta={{ label: 'Browse lower body tendons', href: '/lower-body' }}
+    variant="teal"
+  />
+</BaseLayout>
