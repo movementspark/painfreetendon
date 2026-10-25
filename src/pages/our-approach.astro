@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+<BaseLayout title="Our Approach: RISE and CORE" description="Understand the RISE recovery roadmap and CORE decision framework for tendon rehabilitation, grounded in Active Recovery.">
+<section class="py-20 bg-white"><div class="max-w-4xl mx-auto px-6">
+<p class="text-teal font-bold uppercase tracking-widest text-sm mb-4">Our approach to tendon recovery</p>
+<h1 class="text-4xl md:text-5xl font-extrabold text-slate leading-tight mb-6">A clearer path through tendon recovery</h1>
+<p class="text-xl text-slate-mid leading-relaxed mb-8">Tendon recovery shouldn't be a guessing game. Our programs help you understand your symptoms, find a manageable starting point and progressively rebuild the capacity for the activities you value.</p>
+<p class="text-slate-mid leading-relaxed mb-8">We use an <a class="text-teal underline" href="https://movementspark.com/active-recovery">Active Recovery approach</a>: understand, participate, adapt and build. Appropriate rest or professional assessment may be important, but recovery often involves finding tolerable ways to stay engaged rather than waiting for every symptom to disappear.</p>
+<h2 class="text-3xl font-bold text-slate mt-12 mb-5">RISE: your recovery roadmap</h2>
+<p class="text-slate-mid mb-6">RISE describes practical recovery phases, not fixed timelines or precise biological stages. You may move forward or back as your symptoms and demands change.</p>
+<div class="grid md:grid-cols-2 gap-4 mb-10">
+{[{letter:'R',name:'Reassure & Recover',desc:'Understand the problem, adjust aggravating loads and begin manageable movement.'},{letter:'I',name:'Increase Capacity',desc:'Gradually increase activity tolerance and foundational strength.'},{letter:'S',name:'Strengthen & Spring',desc:'Build greater strength and, when appropriate, faster or spring-like loading.'},{letter:'E',name:'Expand & Engage',desc:'Return to meaningful work, recreation or sport and develop long-term confidence.'}].map(x=><article class="rounded-2xl border border-gray-200 p-6"><div class="text-teal text-3xl font-extrabold mb-2">{x.letter}</div><h3 class="font-bold text-slate text-xl mb-2">{x.name}</h3><p class="text-slate-mid">{x.desc}</p></article>)}
+</div>
+<h2 class="text-3xl font-bold text-slate mb-5">CORE: deciding what to do next</h2>
+<div class="space-y-4 mb-10">
+{[{letter:'C',name:'Capacity',desc:'Understand what your tendon and the rest of your body can currently tolerate.'},{letter:'O',name:'Optimal Load',desc:'Choose activity and exercise that provide a useful challenge you can recover from.'},{letter:'R',name:'Remodel',desc:'Progressively develop strength and tolerance for the demands of daily life and sport.'},{letter:'E',name:'Evidence',desc:'Use changes in symptoms, morning stiffness, strength, function and recovery to adjust your plan.'}].map(x=><div class="border-l-4 border-teal pl-5 py-2"><h3 class="font-bold text-slate text-xl">{x.letter} — {x.name}</h3><p class="text-slate-mid">{x.desc}</p></div>)}
+</div>
+<p class="text-xl font-bold text-slate mb-5">RISE tells you where you are. CORE helps you decide what to do next.</p>
+<p class="text-slate-mid mb-8">These frameworks support learning and decision-making; they do not replace individualized assessment. Sudden injury, significant weakness, unusual symptoms or persistent deterioration warrant professional evaluation.</p>
+<div class="flex flex-wrap gap-4"><a href="/programs" class="btn-primary">Explore recovery programs →</a><a href="/resources" class="border border-gray-300 rounded-full px-7 py-3 font-bold text-slate">Read tendon resources</a></div>
+</div></section>
+</BaseLayout>
